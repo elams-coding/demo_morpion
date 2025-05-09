@@ -2,6 +2,8 @@ package com.elams.demo_morpion;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
@@ -32,7 +34,7 @@ public class ParamJoueur {
     @FXML
     private Label erreurMessage;
     @FXML
-    private ChoiceBox<String> choix;
+    private ChoiceBox<String> selection;
 
     @FXML
     private void initialize() {
@@ -48,6 +50,7 @@ public class ParamJoueur {
     private void modeUnJoueur() {
         initialize();
         modeDeuxJoueurs = false;
+        System.out.println("mode deux joueurs : " + false);
         vBox1.setDisable(false); // Réactive les contrôles après la sélection du mode de jeu
         entree2.setText("MBot");
         hBoxSpecial.setDisable(true);
@@ -62,6 +65,7 @@ public class ParamJoueur {
     private void modeDeuxJoueurs() {
         initialize();
         modeDeuxJoueurs = true;
+        System.out.println("mode deux joueurs : " + true);
         vBox1.setDisable(false);
         if (hBoxSpecial.isDisable()) {
             hBoxSpecial.setDisable(false);
@@ -72,6 +76,8 @@ public class ParamJoueur {
     @FXML
     private void creerJoueur1(ActionEvent event) {
         String nom = entree1.getText().trim();
+        nom = nom.replaceAll("\\s+", "_");
+        nom = Character.toUpperCase(nom.charAt(0)) + nom.substring(1);
         String erreur = nomValide(nom);
         if (erreur != null) {
             afficherMessageErreur(erreur);
@@ -90,6 +96,8 @@ public class ParamJoueur {
     @FXML
     private void creerJoueur2(ActionEvent event) {
         String nom = entree2.getText().trim();
+        nom = nom.replaceAll("\\s+", "_");
+        nom = Character.toUpperCase(nom.charAt(0)) + nom.substring(1);
         String erreur = nomValide(nom);
         if (erreur != null) {
             afficherMessageErreur(erreur);
@@ -153,10 +161,10 @@ public class ParamJoueur {
 
     private void quiCommence() {
         vBox2.setDisable(false);
-        if (modeDeuxJoueurs) {
-            choix.getSelectionModel().selectFirst();
-        } else {
-            choix.getSelectionModel().selectLast();
-        }
+        ObservableList<String> choix = FXCollections.observableArrayList();
+        choix.addAll(p1.getName(), p2.getName());
+        choix.add("Random");
+        selection.setValue(choix.getFirst());
+        selection.setItems(choix);
     }
 }
