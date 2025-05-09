@@ -41,6 +41,10 @@ public class ParamJoueur {
         vBox1.setDisable(false); // Réactive les contrôles après la sélection du mode de jeu
         entree2.setText("MBot");
         hBoxSpecial.setDisable(true);
+        // Création du joueur IA (MBot) pour le mode solo
+        String nom = entree2.getText();
+        p2 = new Player(nom, "O");
+        System.out.println("Joueur 2 : " + p2);
     }
 
     @FXML
