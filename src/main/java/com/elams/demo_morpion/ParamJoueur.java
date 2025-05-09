@@ -16,7 +16,7 @@ public class ParamJoueur {
     private Player p2;
 
     @FXML
-    private ToggleGroup nbJoueurs; // avoir seulement 1 choix
+    private ToggleGroup nbJoueurs; // Gestion de la sélection exclusive du mode de jeu (1 ou 2 joueurs)
     @FXML
     private VBox vBox1;
     @FXML
@@ -38,7 +38,7 @@ public class ParamJoueur {
     @FXML
     private void modeUnJoueur() {
         modeDeuxJoueurs = false;
-        vBox1.setDisable(false);
+        vBox1.setDisable(false); // Réactive les contrôles après la sélection du mode de jeu
         entree2.setText("MBot");
         hBoxSpecial.setDisable(true);
     }
@@ -58,13 +58,13 @@ public class ParamJoueur {
         TextField tf = (TextField) event.getSource();
         String nom = tf.getText();
         p1 = new Player(nom, "X");
-        System.out.println("Joueur 1: " + p1);
+        System.out.println("Joueur 1 : " + p1);
     }
 
     @FXML
     private void creerJoueur2(ActionEvent event) {
         String nom = entree2.getText();
         p2 = new Player(nom, "O");
-        System.out.println("Joueur 2: " + p2);
+        System.out.println("Joueur 2 : " + p2);
     }
 }

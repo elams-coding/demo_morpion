@@ -40,8 +40,8 @@ public final class Accueil {
 
     @FXML
     private void regles() {
-        image.setVisible(false); // cacher l'image
-        if (!reglesTxt.isVisible()) { // verifier que les règles ne soient pas (déjà) affichées
+        image.setVisible(false); // Permet l'affichage du panneau des règles à la place
+        if (!reglesTxt.isVisible()) { // Vérifie que le panneau des règles est masqué avant affichage
             reglesTxt.setVisible(true);
             creditsTxt.setVisible(false);
         } else {
@@ -53,7 +53,7 @@ public final class Accueil {
     @FXML
     private void credits() {
         image.setVisible(false);
-        if (!creditsTxt.isVisible()) { // vérifier que les crédits ne soient pas (déjà) affichés
+        if (!creditsTxt.isVisible()) { // Vérifie que le panneau des crédits est masqué avant affichage
             reglesTxt.setVisible(false);
             creditsTxt.setVisible(true);
         } else {
