@@ -2,12 +2,11 @@ package com.elams.demo_morpion;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+import java.util.Objects;
 
 public class ParamJoueur {
     private boolean modeDeuxJoueurs;
@@ -23,6 +22,8 @@ public class ParamJoueur {
     @FXML
     private VBox vBox2;
     @FXML
+    private TextField entree1;
+    @FXML
     private TextField entree2;
     @FXML
     private Label erreurMessage;
@@ -32,6 +33,8 @@ public class ParamJoueur {
     @FXML
     private void initialize() {
         erreurMessage.setManaged(false);
+        p1 = null;
+        p2 = null;
     }
 
     @FXML
@@ -58,8 +61,7 @@ public class ParamJoueur {
 
     @FXML
     private void creerJoueur1(ActionEvent event) {
-        TextField tf = (TextField) event.getSource();
-        String nom = tf.getText();
+        String nom = entree1.getText();
         p1 = new Player(nom, "X");
         System.out.println("Joueur 1 : " + p1);
     }
