@@ -1,6 +1,5 @@
 package com.elams.demo_morpion;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
