@@ -30,7 +30,7 @@
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </padding>
             <HBox fillHeight="false" spacing="10.0">
-                <TextField onAction="#creerJoueur1" />
+                <TextField fx:id="entree1" onAction="#creerJoueur1" />
                 <Button mnemonicParsing="false" onAction="#creerJoueur1" text="OK" />
             </HBox>
             <HBox fx:id="hBoxSpecial" fillHeight="false" layoutX="10.0" layoutY="10.0" spacing="10.0">
