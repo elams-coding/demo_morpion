@@ -25,9 +25,8 @@ public class Accueil {
 
     @FXML
     private void regles() {
-        image.setVisible(false);
-
-        if (!reglesTxt.isVisible()) {
+        image.setVisible(false); // cacher l'image
+        if (!reglesTxt.isVisible()) { // verifier que les règles ne soient pas (déjà) affichées
             reglesTxt.setVisible(true);
             creditsTxt.setVisible(false);
         } else {
@@ -39,8 +38,7 @@ public class Accueil {
     @FXML
     private void credits() {
         image.setVisible(false);
-
-        if (!creditsTxt.isVisible()) {
+        if (!creditsTxt.isVisible()) { // vérifier que les crédits ne soient pas (déjà) affichés
             reglesTxt.setVisible(false);
             creditsTxt.setVisible(true);
         } else {
