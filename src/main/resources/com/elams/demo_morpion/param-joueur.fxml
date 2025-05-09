@@ -53,7 +53,7 @@
          <VBox fx:id="vBox2" alignment="CENTER" disable="true" spacing="15.0">
             <children>
                <Label text="Qui commence ?" />
-               <ChoiceBox fx:id="choix" />
+               <ChoiceBox fx:id="selection" />
             </children>
          </VBox>
       </children>
