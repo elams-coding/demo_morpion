@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
@@ -16,27 +17,30 @@
     <VBox alignment="CENTER" fillWidth="false" spacing="15.0">
         <Label text="Nombre de joueurs" />
         <HBox alignment="CENTER" spacing="30.0">
-            <RadioButton mnemonicParsing="false" onAction="#modeUnJoueur" text="1 joueur" />
-            <RadioButton mnemonicParsing="false" onAction="#modeDeuxJoueurs" text="2 joueurs" />
+            <RadioButton mnemonicParsing="false" onAction="#modeUnJoueur" text="1 joueur">
+            <toggleGroup>
+               <ToggleGroup fx:id="nbJoueurs" />
+            </toggleGroup></RadioButton>
+            <RadioButton mnemonicParsing="false" onAction="#modeDeuxJoueurs" text="2 joueurs" toggleGroup="$nbJoueurs" />
         </HBox>
     </VBox>
-    <VBox fx:id="vbox1" alignment="CENTER" disable="true" fillWidth="false">
+    <VBox fx:id="vBox1" alignment="CENTER" disable="true" fillWidth="false">
         <VBox alignment="CENTER" fillWidth="false" spacing="20.0">
             <padding>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </padding>
             <HBox fillHeight="false" spacing="10.0">
-                <TextField fx:id="entree1" />
-                <Button mnemonicParsing="false" text="OK" />
+                <TextField onAction="#creerJoueur1" />
+                <Button mnemonicParsing="false" onAction="#creerJoueur1" text="OK" />
             </HBox>
-            <HBox fillHeight="false" layoutX="10.0" layoutY="10.0" spacing="10.0">
-                <TextField fx:id="entree2" />
-                <Button mnemonicParsing="false" text="OK" />
+            <HBox fx:id="hBoxSpecial" fillHeight="false" layoutX="10.0" layoutY="10.0" spacing="10.0">
+                <TextField fx:id="entree2" onAction="#creerJoueur2" />
+                <Button mnemonicParsing="false" onAction="#creerJoueur2" text="OK" />
             </HBox>
         </VBox>
         <Label fx:id="erreurMessage" text="Erreur" textFill="RED" />
     </VBox>
-    <VBox fx:id="vbox2" alignment="CENTER" disable="true" spacing="15.0">
+    <VBox fx:id="vBox2" alignment="CENTER" disable="true" spacing="15.0">
         <Label text="Qui commence ?" />
         <ChoiceBox fx:id="choix" />
     </VBox>
