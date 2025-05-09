@@ -19,12 +19,6 @@ public final class Accueil {
     private VBox creditsTxt;
 
     @FXML
-    private void initialize() {
-        reglesTxt.setVisible(false);
-        creditsTxt.setVisible(false);
-    }
-
-    @FXML
     private void jouer() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/param-joueur.fxml"));
