@@ -23,7 +23,7 @@ The goal is to implement clean game logic and a smooth user experience. UX refin
 
 ## 🛠 Technologies
 
-- Java 17+
+- Java 23
 - JavaFX
 - Maven
 
