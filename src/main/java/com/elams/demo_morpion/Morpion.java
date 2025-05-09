@@ -4,9 +4,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class Morpion extends Application {
     @Override
@@ -16,7 +18,7 @@ public class Morpion extends Application {
             Scene scene = new Scene(loader.load());
 
             stage.setTitle("Morpion");
-            stage.getIcons().getClass().getResourceAsStream("/img/icon.png");
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/icon.png"))));
             stage.setScene(scene);
             stage.show();
         } catch (IOException _) {
