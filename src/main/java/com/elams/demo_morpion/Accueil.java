@@ -1,8 +1,14 @@
 package com.elams.demo_morpion;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public final class Accueil {
     @FXML
@@ -20,7 +26,20 @@ public final class Accueil {
 
     @FXML
     private void jouer() {
-        System.out.println("Bientôt");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/param-joueur.fxml"));
+            Scene scene = new Scene(loader.load());
+
+            Stage stage = (Stage) image.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Impossible de charger l'interface");
+            alert.setContentText("Détail de l'erreur :" + e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
