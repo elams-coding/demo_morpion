@@ -61,7 +61,7 @@
          <Label prefWidth="280.0" text="Le deuxième joueur utilise alors l'autre symbole et choisit où le placer" textAlignment="CENTER" wrapText="true" />
          <Label prefWidth="280.0" text="Les joueurs continuent à se relayer jusqu'à ce que l'un d'entre eux en obtienne trois à la suite ou qu'il fasse un « tic-tac-toe » sur une ligne, une colonne ou en diagonale." textAlignment="CENTER" wrapText="true" />
       </VBox>
-      <VBox fx:id="creditsTxt" alignment="TOP_CENTER" fillWidth="false" spacing="40.0" visible="false">
+      <VBox fx:id="creditsTxt" alignment="CENTER" fillWidth="false" spacing="40.0" visible="false">
          <HBox>
             <VBox fillWidth="false" spacing="20.0">
                <padding>
