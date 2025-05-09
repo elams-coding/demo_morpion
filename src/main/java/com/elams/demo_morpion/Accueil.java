@@ -25,7 +25,6 @@ public final class Accueil {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/param-joueur.fxml"));
             Scene scene = new Scene(loader.load());
 
-//            Stage stage = (Stage) image.getScene().getWindow();
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
