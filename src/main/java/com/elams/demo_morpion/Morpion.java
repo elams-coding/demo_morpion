@@ -21,11 +21,11 @@ public class Morpion extends Application {
             stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/icon.png"))));
             stage.setScene(scene);
             stage.show();
-        } catch (IOException _) {
+        } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText("Impossible de charger l'interface");
-            alert.setContentText("Veuillez contacter l'administrateur");
+            alert.setContentText("Détail de l'erreur : " + e.getMessage());
             alert.showAndWait();
         }
     }
