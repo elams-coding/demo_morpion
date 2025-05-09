@@ -1,23 +1,23 @@
 package com.elams.demo_morpion;
 
 public class Player {
-    private final String nom;
-    private final String signe;
+    private final String name;
+    private final String sign;
     private int score;
 
-    public Player(String nom, String signe) {
+    public Player(String name, String sign) {
         super();
-        this.nom = nom;
-        this.signe = signe;
+        this.name = name;
+        this.sign = sign;
         this.score = 0;
     }
 
-    public String getNom() {
-        return nom;
+    public String getName() {
+        return name;
     }
 
-    public String getSigne() {
-        return signe;
+    public String getSign() {
+        return sign;
     }
 
     public int getScore() {
@@ -26,5 +26,10 @@ public class Player {
 
     public void incrScore() {
         score++;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
