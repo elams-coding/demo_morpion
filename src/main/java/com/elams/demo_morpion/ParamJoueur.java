@@ -1,5 +1,6 @@
 package com.elams.demo_morpion;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
@@ -11,6 +12,8 @@ import javafx.scene.layout.VBox;
 
 public class ParamJoueur {
     private boolean modeDeuxJoueurs;
+    private Player p1;
+    private Player p2;
 
     @FXML
     private ToggleGroup nbJoueurs; // avoir seulement 1 choix
@@ -52,11 +55,16 @@ public class ParamJoueur {
 
     @FXML
     private void creerJoueur1(ActionEvent event) {
-
+        TextField tf = (TextField) event.getSource();
+        String nom = tf.getText();
+        p1 = new Player(nom, "X");
+        System.out.println("Joueur 1: " + p1);
     }
 
     @FXML
     private void creerJoueur2(ActionEvent event) {
-
+        String nom = entree2.getText();
+        p2 = new Player(nom, "O");
+        System.out.println("Joueur 2: " + p2);
     }
 }
