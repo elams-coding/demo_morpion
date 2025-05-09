@@ -24,12 +24,18 @@ public class ParamJoueur {
     @FXML
     private void initialize() {
         erreurMessage.setManaged(false);
+
+        if (entree2.isDisable()) {
+            entree2.setText("MBot");
+        }
     }
 
     @FXML
     private void modeUnJoueur() {
         modeDeuxJoueurs = false;
         vbox1.setDisable(false);
+        entree1.setDisable(false);
+        entree2.setDisable(true);
     }
 
     @FXML
