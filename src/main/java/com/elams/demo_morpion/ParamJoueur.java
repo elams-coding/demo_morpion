@@ -39,10 +39,14 @@ public class ParamJoueur {
         erreurMessage.setManaged(false);
         p1 = null;
         p2 = null;
+        vBox2.setDisable(true);
+        entree1.clear();
+        entree2.clear();
     }
 
     @FXML
     private void modeUnJoueur() {
+        initialize();
         modeDeuxJoueurs = false;
         vBox1.setDisable(false); // Réactive les contrôles après la sélection du mode de jeu
         entree2.setText("MBot");
@@ -56,6 +60,7 @@ public class ParamJoueur {
 
     @FXML
     private void modeDeuxJoueurs() {
+        initialize();
         modeDeuxJoueurs = true;
         vBox1.setDisable(false);
         if (hBoxSpecial.isDisable()) {
@@ -66,27 +71,37 @@ public class ParamJoueur {
 
     @FXML
     private void creerJoueur1(ActionEvent event) {
-        String nom = entree1.getText();
+        String nom = entree1.getText().trim();
         String erreur = nomValide(nom);
         if (erreur != null) {
             afficherMessageErreur(erreur);
+            entree1.clear();
         } else {
             erreurMessage.setManaged(false);
             p1 = new Player(nom, "X");
             System.out.println("Joueur 1 : " + p1);
         }
+
+        if (p1 != null && p2 != null) {
+            quiCommence();
+        }
     }
 
     @FXML
     private void creerJoueur2(ActionEvent event) {
-        String nom = entree2.getText();
+        String nom = entree2.getText().trim();
         String erreur = nomValide(nom);
         if (erreur != null) {
             afficherMessageErreur(erreur);
+            entree2.clear();
         } else {
             erreurMessage.setManaged(false);
             p2 = new Player(nom, "O");
             System.out.println("Joueur 2 : " + p2);
+        }
+
+        if (p2 != null && p1 != null) {
+            quiCommence();
         }
     }
 
@@ -102,7 +117,9 @@ public class ParamJoueur {
             if (c == '?' || c == '!' || c == ':' || c == ',' || c == '/' || c == '\\'
                     || c == ';' || c == '<' || c == '>' || c == '~' || c == '#'
                     || c == '{' || c == '}' || c == '[' || c == ']' || c == '('
-                    || c == ')' || c == '|' || c == '\'' || c == '\"') {
+                    || c == ')' || c == '|' || c == '\'' || c == '\"' || c == '%'
+                    || c == '@' || c == '¨' || c == '^' || c == '¤' || c == 'µ'
+                    || c == '$' || c == '&' || c == '*' || c == '£') {
                 return "Le nom ne doit pas contenir \"?!:,;/\\<>~#{}[]()|'\"@\".";
             }
         }
@@ -132,5 +149,14 @@ public class ParamJoueur {
         );
         timeline.setCycleCount(1);  // Une seule exécution
         timeline.play();
+    }
+
+    private void quiCommence() {
+        vBox2.setDisable(false);
+        if (modeDeuxJoueurs) {
+            choix.getSelectionModel().selectFirst();
+        } else {
+            choix.getSelectionModel().selectLast();
+        }
     }
 }
