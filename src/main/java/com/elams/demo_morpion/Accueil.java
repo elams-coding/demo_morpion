@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
-public class Accueil {
+public final class Accueil {
     @FXML
     private ImageView image;
     @FXML
@@ -17,7 +17,7 @@ public class Accueil {
         reglesTxt.setVisible(false);
         creditsTxt.setVisible(false);
     }
-    
+
     @FXML
     private void jouer() {
         System.out.println("Bientôt");
