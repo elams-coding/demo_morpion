@@ -16,8 +16,8 @@
     <VBox alignment="CENTER" fillWidth="false" spacing="15.0">
         <Label text="Nombre de joueurs" />
         <HBox alignment="CENTER" spacing="30.0">
-            <RadioButton fx:id="solo" mnemonicParsing="false" text="1 joueur" />
-            <RadioButton fx:id="duo" mnemonicParsing="false" text="2 joueurs" />
+            <RadioButton mnemonicParsing="false" onAction="#modeUnJoueur" text="1 joueur" />
+            <RadioButton mnemonicParsing="false" onAction="#modeDeuxJoueurs" text="2 joueurs" />
         </HBox>
     </VBox>
     <VBox fx:id="vbox1" alignment="CENTER" disable="true" fillWidth="false">
