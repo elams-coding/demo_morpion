@@ -11,8 +11,9 @@ import javafx.scene.layout.VBox;
 
 public class ParamJoueur {
     private boolean modeDeuxJoueurs;
+
     @FXML
-    private ToggleGroup nbJoueurs;
+    private ToggleGroup nbJoueurs; // avoir seulement 1 choix
     @FXML
     private VBox vBox1;
     @FXML
@@ -29,17 +30,13 @@ public class ParamJoueur {
     @FXML
     private void initialize() {
         erreurMessage.setManaged(false);
-
-        // TODO gérer le cas où c'est un seul jour et donc créer MBot
-        if (modeDeuxJoueurs) {
-            entree2.setText("MBot");
-        }
     }
 
     @FXML
     private void modeUnJoueur() {
         modeDeuxJoueurs = false;
         vBox1.setDisable(false);
+        entree2.setText("MBot");
         hBoxSpecial.setDisable(true);
     }
 
@@ -49,6 +46,7 @@ public class ParamJoueur {
         vBox1.setDisable(false);
         if (hBoxSpecial.isDisable()) {
             hBoxSpecial.setDisable(false);
+            entree2.setText(null);
         }
     }
 
