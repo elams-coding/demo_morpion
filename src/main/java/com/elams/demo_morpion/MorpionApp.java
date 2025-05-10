@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class Morpion extends Application {
+public class MorpionApp extends Application {
     @Override
     public void start(Stage stage) {
         try {
