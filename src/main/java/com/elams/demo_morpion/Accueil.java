@@ -27,6 +27,8 @@ public final class Accueil {
 
             Stage stage = new Stage();
             stage.setScene(scene);
+            stage.setTitle("Mode de jeu");
+            stage.getIcons().add(MorpionApp.ICON);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
         } catch (IOException e) {
