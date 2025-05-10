@@ -166,5 +166,12 @@ public class ParamJoueur {
         choix.add("Random");
         selection.setValue(choix.getFirst()); // Définit la valeur par défaut
         selection.setItems(choix);
+
+        selection.setOnAction(_ -> {
+            String premierJoueur = selection.getSelectionModel().getSelectedItem();
+            System.out.println(premierJoueur);
+
+//            ouvrirPageJeu();
+        });
     }
 }
