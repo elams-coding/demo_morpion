@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class MorpionApp extends Application {
+    public static final Image ICON = new Image(Objects.requireNonNull(MorpionApp.class.getResourceAsStream("/img/icon.png")));
     @Override
     public void start(Stage stage) {
         try {
@@ -18,7 +19,7 @@ public class MorpionApp extends Application {
             Scene scene = new Scene(loader.load());
 
             stage.setTitle("Morpion");
-            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/icon.png"))));
+            stage.getIcons().add(ICON);
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
