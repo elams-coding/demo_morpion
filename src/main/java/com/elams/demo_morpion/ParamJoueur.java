@@ -79,13 +79,13 @@ public class ParamJoueur {
     private void creerJoueur1(ActionEvent event) {
         String nom = entree1.getText().trim();
         nom = nom.replaceAll("\\s+", "_");
-        nom = Character.toUpperCase(nom.charAt(0)) + nom.substring(1);
         String erreur = nomValide(nom);
         if (erreur != null) {
             afficherMessageErreur(erreur);
             entree1.clear();
         } else {
             erreurMessage.setManaged(false);
+            nom = Character.toUpperCase(nom.charAt(0)) + nom.substring(1);
             p1 = new Player(nom, "X");
             System.out.println("Joueur 1 : " + p1);
         }
@@ -99,13 +99,13 @@ public class ParamJoueur {
     private void creerJoueur2(ActionEvent event) {
         String nom = entree2.getText().trim();
         nom = nom.replaceAll("\\s+", "_");
-        nom = Character.toUpperCase(nom.charAt(0)) + nom.substring(1);
         String erreur = nomValide(nom);
         if (erreur != null) {
             afficherMessageErreur(erreur);
             entree2.clear();
         } else {
             erreurMessage.setManaged(false);
+            nom = Character.toUpperCase(nom.charAt(0)) + nom.substring(1);
             p2 = new Player(nom, "O");
             System.out.println("Joueur 2 : " + p2);
         }
