@@ -8,9 +8,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -179,14 +183,12 @@ public class ParamJoueur {
     private void ouvrirPageJeu(String premierJoueur) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/jeu.fxml"));
-            Scene scene = new Scene(loader.load());
-            // TODO fermer les deux anciennes pages + ouvrir celle-ci
+            Scene sceneJeu = new Scene(loader.load());
+
+            Stage fenetreModale = (Stage) vBox1.getScene().getWindow();
+            fenetreModale.close();
         } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText("Impossible de charger l'interface");
-            alert.setContentText("Détail de l'erreur :" + e.getMessage());
-            alert.showAndWait();
+            MorpionApp.impossibleOuvrirInterface(e);
         }
     }
 }
