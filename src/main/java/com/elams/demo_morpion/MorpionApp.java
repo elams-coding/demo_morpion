@@ -12,6 +12,7 @@ import java.util.Objects;
 
 public class MorpionApp extends Application {
     public static final Image ICON = new Image(Objects.requireNonNull(MorpionApp.class.getResourceAsStream("/img/icon.png")));
+
     public static void impossibleOuvrirInterface(IOException e) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Erreur");
