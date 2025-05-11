@@ -3,7 +3,6 @@ package com.elams.demo_morpion;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -32,11 +31,7 @@ public final class Accueil {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
         } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText("Impossible de charger l'interface");
-            alert.setContentText("Détail de l'erreur :" + e.getMessage());
-            alert.showAndWait();
+            MorpionApp.impossibleOuvrirInterface(e);
         }
     }
 
