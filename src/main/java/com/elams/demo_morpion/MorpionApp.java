@@ -12,6 +12,18 @@ import java.util.Objects;
 
 public class MorpionApp extends Application {
     public static final Image ICON = new Image(Objects.requireNonNull(MorpionApp.class.getResourceAsStream("/img/icon.png")));
+    public static void impossibleOuvrirInterface(IOException e) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setHeaderText("Impossible de charger l'interface");
+        alert.setContentText("Détail de l'erreur : " + e.getMessage());
+        alert.showAndWait();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage stage) {
         try {
@@ -23,15 +35,7 @@ public class MorpionApp extends Application {
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText("Impossible de charger l'interface");
-            alert.setContentText("Détail de l'erreur : " + e.getMessage());
-            alert.showAndWait();
+            impossibleOuvrirInterface(e);
         }
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }
