@@ -1,9 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-            xmlns="http://javafx.com/javafx"
-            fx:controller="com.elams.demo_morpion.Jeu"
-            prefHeight="400.0" prefWidth="600.0">
 
-</AnchorPane>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1"
+            fx:controller="com.elams.demo_morpion.Jeu">
+    <center>
+        <GridPane BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
+            </rowConstraints>
+        </GridPane>
+    </center>
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="Jeu">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Nouvelle partie"/>
+                        <MenuItem mnemonicParsing="false" text="Réinitialiser"/>
+                        <MenuItem mnemonicParsing="false" text="Quitter"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Fenêtre">
+                    <items>
+                        <CheckMenuItem mnemonicParsing="false" text="Historique"/>
+                        <CheckMenuItem mnemonicParsing="false" text="Score"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Aide">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="À propos"/>
+                        <MenuItem mnemonicParsing="false" text="Règles du jeu"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <left>
+        <ScrollPane fitToHeight="true" fitToWidth="true" prefWidth="140.0" BorderPane.alignment="CENTER">
+            <content>
+                <VBox prefHeight="200.0" prefWidth="100.0"/>
+            </content>
+        </ScrollPane>
+    </left>
+    <right>
+        <ScrollPane fitToHeight="true" fitToWidth="true" prefWidth="140.0" BorderPane.alignment="CENTER">
+            <content>
+                <VBox prefHeight="200.0" prefWidth="100.0"/>
+            </content>
+        </ScrollPane>
+    </right>
+    <bottom>
+        <HBox prefHeight="65.0" BorderPane.alignment="CENTER"/>
+    </bottom>
+</BorderPane>
