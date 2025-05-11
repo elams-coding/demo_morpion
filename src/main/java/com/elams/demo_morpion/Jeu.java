@@ -1,11 +1,10 @@
 package com.elams.demo_morpion;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckMenuItem;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
 public class Jeu {
@@ -26,8 +25,6 @@ public class Jeu {
     @FXML
     private GridPane plateau;
     @FXML
-    private MenuItem quitter;
-    @FXML
     private MenuItem regles;
     @FXML
     private MenuItem reinitialiser;
@@ -41,5 +38,22 @@ public class Jeu {
     @FXML
     void boutonCliquer(ActionEvent event) {
         // Gérer le clic sur un bouton du plateau de jeu
+    }
+
+    @FXML
+    public void quitter() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Quitter");
+        alert.setHeaderText(null);
+        alert.setContentText("Voulez-vous vraiment quitter ?");
+        alert.showAndWait();
+
+        alert.setOnCloseRequest(Event::consume);
+
+        if (alert.getResult() == ButtonType.CANCEL) {
+            alert.close();
+        } else if (alert.getResult() == ButtonType.OK) {
+            Platform.exit();
+        }
     }
 }
