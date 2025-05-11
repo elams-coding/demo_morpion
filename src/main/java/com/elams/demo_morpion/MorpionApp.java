@@ -34,6 +34,7 @@ public class MorpionApp extends Application {
             stage.setTitle("Morpion");
             stage.getIcons().add(ICON);
             stage.setScene(scene);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             impossibleOuvrirInterface(e);
