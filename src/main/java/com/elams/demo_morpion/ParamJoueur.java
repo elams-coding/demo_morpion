@@ -6,13 +6,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+
+import java.io.IOException;
 
 public class ParamJoueur {
     private boolean modeDeuxJoueurs;
@@ -171,7 +172,21 @@ public class ParamJoueur {
             String premierJoueur = selection.getSelectionModel().getSelectedItem();
             System.out.println(premierJoueur);
 
-//            ouvrirPageJeu();
+            ouvrirPageJeu(premierJoueur);
         });
+    }
+
+    private void ouvrirPageJeu(String premierJoueur) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/jeu.fxml"));
+            Scene scene = new Scene(loader.load());
+            // TODO fermer les deux anciennes pages + ouvrir celle-ci
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Impossible de charger l'interface");
+            alert.setContentText("Détail de l'erreur :" + e.getMessage());
+            alert.showAndWait();
+        }
     }
 }
