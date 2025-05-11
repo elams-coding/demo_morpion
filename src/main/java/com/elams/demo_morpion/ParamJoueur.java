@@ -17,8 +17,8 @@ import javafx.util.Duration;
 
 public class ParamJoueur {
     private boolean modeDeuxJoueurs;
-    private Player p1;
-    private Player p2;
+    public static Player p1;
+    public static Player p2;
     public static String premierJoueur;
 
     @FXML
