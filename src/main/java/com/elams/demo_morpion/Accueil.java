@@ -38,8 +38,14 @@ public final class Accueil {
 
                 // Ouvrir la page de jeu
                 loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/jeu.fxml"));
+
                 scene = new Scene(loader.load());
+                Jeu gererJeu = loader.getController();
                 stage.setScene(scene);
+                stage.setOnCloseRequest(event -> {
+                    gererJeu.quitter();
+                    event.consume(); // Empêche la fermeture automatique
+                });
                 stage.show();
             }
         } catch (IOException e) {

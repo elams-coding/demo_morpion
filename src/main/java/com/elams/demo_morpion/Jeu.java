@@ -2,10 +2,11 @@ package com.elams.demo_morpion;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+
+import java.util.Optional;
 
 public class Jeu {
     @FXML
@@ -33,6 +34,7 @@ public class Jeu {
 
     @FXML
     public void initialize() {
+
     }
 
     @FXML
@@ -46,13 +48,8 @@ public class Jeu {
         alert.setTitle("Quitter");
         alert.setHeaderText(null);
         alert.setContentText("Voulez-vous vraiment quitter ?");
-        alert.showAndWait();
-
-        alert.setOnCloseRequest(Event::consume);
-
-        if (alert.getResult() == ButtonType.CANCEL) {
-            alert.close();
-        } else if (alert.getResult() == ButtonType.OK) {
+        Optional<ButtonType> resultat = alert.showAndWait();
+        if (resultat.isPresent() && resultat.get() == ButtonType.OK) {
             Platform.exit();
         }
     }
