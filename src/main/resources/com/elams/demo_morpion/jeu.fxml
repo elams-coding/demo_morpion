@@ -57,7 +57,7 @@
                                                     shortcut="UP"/>
                             </accelerator>
                         </MenuItem>
-                    <MenuItem fx:id="quitter" mnemonicParsing="false" text="Quitter">
+                    <MenuItem mnemonicParsing="false" onAction="#quitter" text="Quitter">
                             <accelerator>
                                 <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP"
                                                     shortcut="UP"/>
