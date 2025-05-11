@@ -8,7 +8,7 @@
             prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1"
             fx:controller="com.elams.demo_morpion.Jeu">
     <center>
-        <GridPane BorderPane.alignment="CENTER">
+        <GridPane fx:id="plateau" BorderPane.alignment="CENTER">
             <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
@@ -19,23 +19,24 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
             </rowConstraints>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"/>
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                    GridPane.rowIndex="1"/>
+                    onAction="#boutonCliquer"/>
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                    GridPane.rowIndex="2"/>
+                    onAction="#boutonCliquer" GridPane.rowIndex="1"/>
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                    GridPane.columnIndex="1"/>
+                    onAction="#boutonCliquer" GridPane.rowIndex="2"/>
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                    GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    onAction="#boutonCliquer" GridPane.columnIndex="1"/>
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                    GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    onAction="#boutonCliquer" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                    GridPane.columnIndex="2"/>
+                    onAction="#boutonCliquer" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                    GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                    onAction="#boutonCliquer" GridPane.columnIndex="2"/>
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                    GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                    onAction="#boutonCliquer" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                    onAction="#boutonCliquer" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
             <BorderPane.margin>
                 <Insets/>
             </BorderPane.margin>
@@ -44,19 +45,19 @@
     <top>
         <MenuBar BorderPane.alignment="CENTER">
                 <Menu mnemonicParsing="false" text="Jeu">
-                        <MenuItem mnemonicParsing="false" text="Nouvelle partie">
+                    <MenuItem fx:id="nouvellePartie" mnemonicParsing="false" text="Nouvelle partie">
                             <accelerator>
                                 <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP"
                                                     shortcut="UP"/>
                             </accelerator>
                         </MenuItem>
-                        <MenuItem mnemonicParsing="false" text="Réinitialiser">
+                    <MenuItem fx:id="reinitialiser" mnemonicParsing="false" text="Réinitialiser">
                             <accelerator>
                                 <KeyCodeCombination alt="UP" code="R" control="DOWN" meta="UP" shift="UP"
                                                     shortcut="UP"/>
                             </accelerator>
                         </MenuItem>
-                        <MenuItem mnemonicParsing="false" text="Quitter">
+                    <MenuItem fx:id="quitter" mnemonicParsing="false" text="Quitter">
                             <accelerator>
                                 <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP"
                                                     shortcut="UP"/>
@@ -67,15 +68,15 @@
                     </accelerator>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Fenêtre">
-                        <CheckMenuItem mnemonicParsing="false" selected="true" text="Historique">
+                    <CheckMenuItem fx:id="activerHistorique" mnemonicParsing="false" selected="true" text="Historique">
                             <accelerator>
-                                <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="UP"
+                                <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="DOWN"
                                                     shortcut="UP"/>
                             </accelerator>
                         </CheckMenuItem>
-                        <CheckMenuItem mnemonicParsing="false" selected="true" text="Score">
+                    <CheckMenuItem fx:id="activerScore" mnemonicParsing="false" selected="true" text="Score">
                             <accelerator>
-                                <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP"
+                                <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN"
                                                     shortcut="UP"/>
                             </accelerator>
                         </CheckMenuItem>
@@ -84,13 +85,13 @@
                     </accelerator>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Aide">
-                        <MenuItem mnemonicParsing="false" text="À propos">
+                    <MenuItem fx:id="aPropos" mnemonicParsing="false" text="À propos">
                             <accelerator>
                                 <KeyCodeCombination alt="DOWN" code="H" control="DOWN" meta="UP" shift="UP"
                                                     shortcut="UP"/>
                             </accelerator>
                         </MenuItem>
-                        <MenuItem mnemonicParsing="false" text="Règles du jeu">
+                    <MenuItem fx:id="regles" mnemonicParsing="false" text="Règles du jeu">
                             <accelerator>
                                 <KeyCodeCombination alt="DOWN" code="R" control="DOWN" meta="UP" shift="UP"
                                                     shortcut="UP"/>
@@ -103,16 +104,16 @@
         </MenuBar>
     </top>
     <left>
-        <ScrollPane fitToHeight="true" fitToWidth="true" maxWidth="1.7976931348623157E308" minWidth="110.0"
-                    BorderPane.alignment="CENTER">
+        <ScrollPane fx:id="conteneurHistorique" fitToHeight="true" fitToWidth="true" maxWidth="1.7976931348623157E308"
+                    minWidth="110.0" BorderPane.alignment="CENTER">
             <VBox minWidth="-Infinity">
                 <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Historique" textAlignment="CENTER"/>
                 </VBox>
         </ScrollPane>
     </left>
     <right>
-        <ScrollPane fitToHeight="true" fitToWidth="true" maxWidth="1.7976931348623157E308" minWidth="110.0"
-                    BorderPane.alignment="CENTER">
+        <ScrollPane fx:id="conteneurScore" fitToHeight="true" fitToWidth="true" maxWidth="1.7976931348623157E308"
+                    minWidth="110.0" BorderPane.alignment="CENTER">
             <VBox minWidth="-Infinity">
                 <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Score"/>
                 </VBox>
@@ -121,8 +122,8 @@
     <bottom>
         <HBox alignment="CENTER" prefHeight="65.0" spacing="5.0" BorderPane.alignment="CENTER">
             <Label text="Tour de :"/>
-            <Label text="Label"/>
-            <Label text="[ Signe ]"/>
+            <Label fx:id="nom" text="Label"/>
+            <Label fx:id="signe" text="[ Signe ]"/>
         </HBox>
     </bottom>
 </BorderPane>
