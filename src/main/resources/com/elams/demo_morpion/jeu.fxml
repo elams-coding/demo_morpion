@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.input.*?>
 <?import javafx.scene.layout.*?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1"
@@ -18,6 +19,28 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
             </rowConstraints>
+            <children>
+                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"/>
+                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                        GridPane.rowIndex="1"/>
+                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                        GridPane.rowIndex="2"/>
+                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                        GridPane.columnIndex="1"/>
+                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                        GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                        GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                        GridPane.columnIndex="2"/>
+                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                        GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                        GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+            </children>
+            <BorderPane.margin>
+                <Insets/>
+            </BorderPane.margin>
         </GridPane>
     </center>
     <top>
@@ -25,41 +48,100 @@
             <menus>
                 <Menu mnemonicParsing="false" text="Jeu">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Nouvelle partie"/>
-                        <MenuItem mnemonicParsing="false" text="Réinitialiser"/>
-                        <MenuItem mnemonicParsing="false" text="Quitter"/>
+                        <MenuItem mnemonicParsing="false" text="Nouvelle partie">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP"
+                                                    shortcut="UP"/>
+                            </accelerator>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" text="Réinitialiser">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="R" control="DOWN" meta="UP" shift="UP"
+                                                    shortcut="UP"/>
+                            </accelerator>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" text="Quitter">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP"
+                                                    shortcut="UP"/>
+                            </accelerator>
+                        </MenuItem>
                     </items>
+                    <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="J" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    </accelerator>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Fenêtre">
                     <items>
-                        <CheckMenuItem mnemonicParsing="false" text="Historique"/>
-                        <CheckMenuItem mnemonicParsing="false" text="Score"/>
+                        <CheckMenuItem mnemonicParsing="false" selected="true" text="Historique">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="UP"
+                                                    shortcut="UP"/>
+                            </accelerator>
+                        </CheckMenuItem>
+                        <CheckMenuItem mnemonicParsing="false" selected="true" text="Score">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP"
+                                                    shortcut="UP"/>
+                            </accelerator>
+                        </CheckMenuItem>
                     </items>
+                    <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="F" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    </accelerator>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Aide">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="À propos"/>
-                        <MenuItem mnemonicParsing="false" text="Règles du jeu"/>
+                        <MenuItem mnemonicParsing="false" text="À propos">
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="H" control="DOWN" meta="UP" shift="UP"
+                                                    shortcut="UP"/>
+                            </accelerator>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" text="Règles du jeu">
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="R" control="DOWN" meta="UP" shift="UP"
+                                                    shortcut="UP"/>
+                            </accelerator>
+                        </MenuItem>
                     </items>
+                    <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    </accelerator>
                 </Menu>
             </menus>
         </MenuBar>
     </top>
     <left>
-        <ScrollPane fitToHeight="true" fitToWidth="true" prefWidth="140.0" BorderPane.alignment="CENTER">
+        <ScrollPane fitToHeight="true" fitToWidth="true" BorderPane.alignment="CENTER">
             <content>
-                <VBox prefHeight="200.0" prefWidth="100.0"/>
+                <VBox maxWidth="300.0" prefWidth="100.0">
+                    <children>
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Historique"
+                               textAlignment="CENTER"/>
+                    </children>
+                </VBox>
             </content>
         </ScrollPane>
     </left>
     <right>
-        <ScrollPane fitToHeight="true" fitToWidth="true" prefWidth="140.0" BorderPane.alignment="CENTER">
+        <ScrollPane fitToHeight="true" fitToWidth="true" BorderPane.alignment="CENTER">
             <content>
-                <VBox prefHeight="200.0" prefWidth="100.0"/>
+                <VBox maxWidth="300.0" prefWidth="100.0">
+                    <children>
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Score"/>
+                    </children>
+                </VBox>
             </content>
         </ScrollPane>
     </right>
     <bottom>
-        <HBox prefHeight="65.0" BorderPane.alignment="CENTER"/>
+        <HBox alignment="CENTER" prefHeight="65.0" spacing="5.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label text="Tour de :"/>
+                <Label text="Label"/>
+                <Label text="[ Signe ]"/>
+            </children>
+        </HBox>
     </bottom>
 </BorderPane>
