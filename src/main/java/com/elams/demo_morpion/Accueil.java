@@ -31,6 +31,11 @@ public final class Accueil {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
 
+            // Fermer la page d'accueil
+            stage = (Stage) image.getScene().getWindow();
+            stage.close();
+
+            // Ouvrir la page de jeu
             loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/jeu.fxml"));
             scene = new Scene(loader.load());
             stage.setScene(scene);
