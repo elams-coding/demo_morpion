@@ -29,6 +29,11 @@ public final class Accueil {
             stage.setTitle("Mode de jeu");
             stage.getIcons().add(MorpionApp.ICON);
             stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+
+            loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/jeu.fxml"));
+            scene = new Scene(loader.load());
+            stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
             MorpionApp.impossibleOuvrirInterface(e);
