@@ -6,8 +6,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -16,8 +14,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
-import java.io.IOException;
 
 public class ParamJoueur {
     private boolean modeDeuxJoueurs;
@@ -181,14 +177,8 @@ public class ParamJoueur {
     }
 
     private void ouvrirPageJeu(String premierJoueur) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/jeu.fxml"));
-            Scene sceneJeu = new Scene(loader.load());
-
-            Stage fenetreModale = (Stage) vBox1.getScene().getWindow();
-            fenetreModale.close();
-        } catch (IOException e) {
-            MorpionApp.impossibleOuvrirInterface(e);
-        }
+        // Fermer la fenêtre modale de configuration des joueurs et la page d'accueil pour passer à l'écran de jeu
+        Stage fenetreModale = (Stage) vBox1.getScene().getWindow();
+        fenetreModale.close();
     }
 }
