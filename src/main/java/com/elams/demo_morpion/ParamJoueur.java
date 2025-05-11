@@ -19,6 +19,7 @@ public class ParamJoueur {
     private boolean modeDeuxJoueurs;
     private Player p1;
     private Player p2;
+    public static String premierJoueur;
 
     @FXML
     private ToggleGroup nbJoueurs; // Gestion de la sélection exclusive du mode de jeu (1 ou 2 joueurs)
@@ -169,15 +170,15 @@ public class ParamJoueur {
         selection.setItems(choix);
 
         selection.setOnAction(_ -> {
-            String premierJoueur = selection.getSelectionModel().getSelectedItem();
+            premierJoueur = selection.getSelectionModel().getSelectedItem();
             System.out.println(premierJoueur);
 
-            ouvrirPageJeu(premierJoueur);
+            ouvrirPageJeu();
         });
     }
 
-    private void ouvrirPageJeu(String premierJoueur) {
-        // Fermer la fenêtre modale de configuration des joueurs et la page d'accueil pour passer à l'écran de jeu
+    private void ouvrirPageJeu() {
+        // Fermer la fenêtre modale de configuration des joueurs pour passer à l'écran de jeu
         Stage fenetreModale = (Stage) vBox1.getScene().getWindow();
         fenetreModale.close();
     }
