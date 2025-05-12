@@ -13,7 +13,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 public class Jeu {
     public static final String X = "X";
@@ -90,24 +92,43 @@ public class Jeu {
         plateauJeu[ligne][colonne] = signe.getText();
         ajouterHistorique(nom.getText() + " : (" + ligne + "," + colonne + ")" + " [" + signe.getText() + "]");
 
-        if (avoirGagnant(plateauJeu)) {
-            if (!egalite) {
-                System.out.println("Gagnant !");
-            } else {
-                System.out.println("Match nul !");
+        Set<String> positionsGagnantes = avoirGagnant(plateauJeu);
+        if (!egalite && !positionsGagnantes.isEmpty()) {
+            for (Node node : plateau.getChildren()) {
+                if (node instanceof Button btn) {
+                    String pos = GridPane.getRowIndex(btn) + "," + GridPane.getColumnIndex(btn);
+                    if (positionsGagnantes.contains(pos)) {
+                        btn.setStyle("-fx-background-color: lightgreen;" +
+                                "-fx-background-radius: 5;" +
+                                "-fx-border-style: solid;" +
+                                "-fx-border-color: darkgreen;" +
+                                "-fx-border-width: 2;" +
+                                "-fx-border-radius: 5");
+                    }
+                }
             }
+            ajouterHistorique("Gagnant : " + nom.getText() + " !");
+            plateau.setDisable(true);
+        } else if (egalite) {
+            ajouterHistorique("Match nul !");
+            plateau.setDisable(true);
         }
 
         changerNom();
     }
 
-    private boolean avoirGagnant(String[][] plateau) {
+    private Set<String> avoirGagnant(String[][] plateau) {
+        Set<String> positionsGagnantes = new HashSet<>();
+
         // Vérifier les lignes
         for (int i = 0; i < 3; i++) {
             if (plateau[i][0] != null &&
                     plateau[i][0].equals(plateau[i][1]) &&
                     plateau[i][1].equals(plateau[i][2])) {
-                return true;
+                positionsGagnantes.add(i + ",0");
+                positionsGagnantes.add(i + ",1");
+                positionsGagnantes.add(i + ",2");
+                return positionsGagnantes;
             }
         }
 
@@ -116,7 +137,10 @@ public class Jeu {
             if (plateau[0][j] != null &&
                     plateau[0][j].equals(plateau[1][j]) &&
                     plateau[1][j].equals(plateau[2][j])) {
-                return true;
+                positionsGagnantes.add("0," + j);
+                positionsGagnantes.add("1," + j);
+                positionsGagnantes.add("2," + j);
+                return positionsGagnantes;
             }
         }
 
@@ -124,14 +148,20 @@ public class Jeu {
         if (plateau[0][0] != null &&
                 plateau[0][0].equals(plateau[1][1]) &&
                 plateau[1][1].equals(plateau[2][2])) {
-            return true;
+            positionsGagnantes.add("0,0");
+            positionsGagnantes.add("1,1");
+            positionsGagnantes.add("2,2");
+            return positionsGagnantes;
         }
 
         // Vérifier la diagonale secondaire
         if (plateau[0][2] != null &&
                 plateau[0][2].equals(plateau[1][1]) &&
                 plateau[1][1].equals(plateau[2][0])) {
-            return true;
+            positionsGagnantes.add("0,2");
+            positionsGagnantes.add("1,1");
+            positionsGagnantes.add("2,0");
+            return positionsGagnantes;
         }
 
         // Vérifier s'il y a match nul (plus de cases vides)
@@ -152,7 +182,7 @@ public class Jeu {
             egalite = true;
         }
 
-        return egalite;
+        return positionsGagnantes; // Ensemble vide si pas de gagnant
     }
 
     @FXML
