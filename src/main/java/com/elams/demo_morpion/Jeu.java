@@ -50,6 +50,7 @@ public class Jeu {
         initialiserNomJoueurs();
         ajouterAuxVolets("Début de la partie !");
         ajouterAuxVolets("Partie " + nbParties);
+        ajouterHistorique("Premier joueur : " + premierJoueur);
         plateauJeu = new String[plateau.getRowCount()][plateau.getColumnCount()];
         egalite = false;
     }
@@ -108,9 +109,11 @@ public class Jeu {
                 }
             }
             ajouterHistorique("Gagnant : " + nom.getText() + " !");
+            augmenterScore(nom.getText());
             plateau.setDisable(true);
         } else if (egalite) {
             ajouterHistorique("Match nul !");
+            augmenterScore(null);
             plateau.setDisable(true);
         }
 
@@ -183,6 +186,19 @@ public class Jeu {
         }
 
         return positionsGagnantes; // Ensemble vide si pas de gagnant
+    }
+
+    private void augmenterScore(String joueur) {
+        Player joueur1 = ParamJoueur.p1;
+        Player joueur2 = ParamJoueur.p2;
+
+        if (joueur != null && joueur.equals(premierJoueur)) {
+            joueur1.incrScore();
+        } else if (joueur != null && joueur.equals(secondJoueur)) {
+            joueur2.incrScore();
+        }
+        System.out.println("p1 score: " + joueur1.getScore());
+        System.out.println("p2 score: " + joueur2.getScore());
     }
 
     @FXML
