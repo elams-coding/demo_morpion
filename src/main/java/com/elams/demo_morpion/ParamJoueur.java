@@ -61,6 +61,7 @@ public class ParamJoueur {
         String nom = entree2.getText();
         p2 = new Player(nom, "O");
         System.out.println("Joueur 2 : " + p2);
+        entree1.requestFocus();
     }
 
     @FXML
@@ -73,6 +74,7 @@ public class ParamJoueur {
             hBoxSpecial.setDisable(false);
             entree2.setText(null);
         }
+        entree1.requestFocus();
     }
 
     @FXML
@@ -88,6 +90,10 @@ public class ParamJoueur {
             nom = Character.toUpperCase(nom.charAt(0)) + nom.substring(1);
             p1 = new Player(nom, "X");
             System.out.println("Joueur 1 : " + p1);
+
+            if (modeDeuxJoueurs) {
+                entree2.requestFocus();
+            }
         }
 
         if (p1 != null && p2 != null) {
@@ -163,6 +169,7 @@ public class ParamJoueur {
 
     private void quiCommence() {
         vBox2.setDisable(false);
+        selection.requestFocus();
         ObservableList<String> choix = FXCollections.observableArrayList();
         choix.addAll(p1.getName(), p2.getName());
         choix.add("Random");
