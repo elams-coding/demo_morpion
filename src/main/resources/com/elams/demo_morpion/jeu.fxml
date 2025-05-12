@@ -85,13 +85,13 @@
                     </accelerator>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Aide">
-                    <MenuItem fx:id="aPropos" mnemonicParsing="false" text="À propos">
+                    <MenuItem mnemonicParsing="false" onAction="#aPropos" text="À propos">
                             <accelerator>
                                 <KeyCodeCombination alt="DOWN" code="H" control="DOWN" meta="UP" shift="UP"
                                                     shortcut="UP"/>
                             </accelerator>
                         </MenuItem>
-                    <MenuItem fx:id="regles" mnemonicParsing="false" text="Règles du jeu">
+                    <MenuItem mnemonicParsing="false" onAction="#regles" text="Règles du jeu">
                             <accelerator>
                                 <KeyCodeCombination alt="DOWN" code="R" control="DOWN" meta="UP" shift="UP"
                                                     shortcut="UP"/>
@@ -106,7 +106,7 @@
     <left>
         <ScrollPane fx:id="conteneurHistorique" fitToHeight="true" fitToWidth="true" maxWidth="1.7976931348623157E308"
                     minWidth="110.0" BorderPane.alignment="CENTER">
-            <VBox minWidth="-Infinity">
+            <VBox fx:id="voletHistorique" minWidth="-Infinity">
                 <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Historique" textAlignment="CENTER"/>
                 </VBox>
         </ScrollPane>
@@ -114,16 +114,22 @@
     <right>
         <ScrollPane fx:id="conteneurScore" fitToHeight="true" fitToWidth="true" maxWidth="1.7976931348623157E308"
                     minWidth="110.0" BorderPane.alignment="CENTER">
-            <VBox minWidth="-Infinity">
+            <VBox fx:id="voletScore" minWidth="-Infinity">
                 <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Score"/>
                 </VBox>
         </ScrollPane>
     </right>
     <bottom>
-        <HBox alignment="CENTER" prefHeight="65.0" spacing="5.0" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER" fillHeight="false" prefHeight="65.0" spacing="5.0" BorderPane.alignment="CENTER">
             <Label text="Tour de :"/>
             <Label fx:id="nom" text="Label"/>
-            <Label fx:id="signe" text="[ Signe ]"/>
+            <HBox alignment="CENTER" fillHeight="false">
+                <children>
+                    <Label text="[ "/>
+                    <Label fx:id="signe" layoutX="10.0" layoutY="10.0" text="Signe"/>
+                    <Label layoutX="54.0" layoutY="10.0" text=" ]"/>
+                </children>
+            </HBox>
         </HBox>
     </bottom>
 </BorderPane>
