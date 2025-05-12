@@ -61,7 +61,7 @@ public class Jeu {
     }
 
     @FXML
-    private void activerHistorique() {
+    private void afficherHistorique() {
         if (conteneurHistorique.isVisible() && conteneurHistorique.isManaged()) {
             conteneurHistorique.setVisible(false);
             conteneurHistorique.setManaged(false);
@@ -72,7 +72,7 @@ public class Jeu {
     }
 
     @FXML
-    private void activerScore() {
+    private void afficherScore() {
         if (conteneurScore.isVisible() && conteneurScore.isManaged()) {
             conteneurScore.setVisible(false);
             conteneurScore.setManaged(false);
