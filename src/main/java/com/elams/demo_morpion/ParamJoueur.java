@@ -176,7 +176,7 @@ public class ParamJoueur {
         ObservableList<String> choix = FXCollections.observableArrayList();
         choix.addAll(p1.getName(), p2.getName());
         choix.add(RANDOM);
-        selection.setValue(choix.getFirst()); // Définit la valeur par défaut
+        selection.setValue("Choisissez un joueur");
         selection.setItems(choix);
 
         selection.setOnAction(_ -> {
@@ -192,7 +192,6 @@ public class ParamJoueur {
             }
 
             System.out.println(premierJoueur);
-
             ouvrirPageJeu();
         });
     }
