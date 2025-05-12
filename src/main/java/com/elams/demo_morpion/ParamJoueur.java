@@ -14,7 +14,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.util.Random;
+
 public class ParamJoueur {
+    public static final String RANDOM = "Random";
+
     private boolean modeDeuxJoueurs;
     public static Player p1;
     public static Player p2;
@@ -171,12 +175,22 @@ public class ParamJoueur {
         selection.requestFocus();
         ObservableList<String> choix = FXCollections.observableArrayList();
         choix.addAll(p1.getName(), p2.getName());
-        choix.add("Random");
+        choix.add(RANDOM);
         selection.setValue(choix.getFirst()); // Définit la valeur par défaut
         selection.setItems(choix);
 
         selection.setOnAction(_ -> {
             premierJoueur = selection.getSelectionModel().getSelectedItem();
+
+            if (premierJoueur.equals(RANDOM)) { // Sélection aléatoire du premier joueur
+                Random random = new Random();
+                if (random.nextBoolean()) {
+                    premierJoueur = p1.getName();
+                } else {
+                    premierJoueur = p2.getName();
+                }
+            }
+
             System.out.println(premierJoueur);
 
             ouvrirPageJeu();
