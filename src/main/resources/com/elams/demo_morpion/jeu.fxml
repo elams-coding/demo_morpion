@@ -68,13 +68,14 @@
                     </accelerator>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Fenêtre">
-                    <CheckMenuItem fx:id="activerHistorique" mnemonicParsing="false" selected="true" text="Historique">
+                    <CheckMenuItem mnemonicParsing="false" onAction="#activerHistorique" selected="true"
+                                   text="Historique">
                             <accelerator>
                                 <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="DOWN"
                                                     shortcut="UP"/>
                             </accelerator>
                         </CheckMenuItem>
-                    <CheckMenuItem fx:id="activerScore" mnemonicParsing="false" selected="true" text="Score">
+                    <CheckMenuItem mnemonicParsing="false" onAction="#activerScore" selected="true" text="Score">
                             <accelerator>
                                 <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN"
                                                     shortcut="UP"/>
