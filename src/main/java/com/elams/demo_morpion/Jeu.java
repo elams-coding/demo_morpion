@@ -13,6 +13,8 @@ import java.util.Optional;
 public class Jeu {
     public static final String X = "X";
     public static final String O = "O";
+    private String premierJoueur;
+    private String secondJoueur;
 
     @FXML
     private CheckMenuItem activerHistorique;
@@ -44,6 +46,7 @@ public class Jeu {
         signe.setText(X);
         initialiserPlateau();
         initialiserVolets();
+        initialiserNomJoueurs();
     }
 
     private void changerSigne() {
@@ -93,5 +96,13 @@ public class Jeu {
         // Supprimer le contenu des volets gauche et droite, tout en conservant leur en-tête
         voletHistorique.getChildren().remove(1, voletHistorique.getChildren().size());
         voletScore.getChildren().remove(1, voletHistorique.getChildren().size());
+    }
+
+    private void initialiserNomJoueurs() {
+        assert premierJoueur != null;
+        premierJoueur = ParamJoueur.premierJoueur;
+        assert secondJoueur != null;
+        secondJoueur = (premierJoueur.equals(ParamJoueur.p1.getName())) ? ParamJoueur.p2.getName() : ParamJoueur.p1.getName();
+        nom.setText(premierJoueur);
     }
 }
