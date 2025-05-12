@@ -191,7 +191,7 @@ public class ParamJoueur {
                 }
             }
 
-            System.out.println(premierJoueur);
+            System.out.println("Premier joueur : " + premierJoueur);
             ouvrirPageJeu();
         });
     }
