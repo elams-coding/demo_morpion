@@ -87,7 +87,6 @@ public class Jeu {
 
     @FXML
     private void regles() {
-        // TODO Nouvelle modale pour les règles
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/regles.fxml"));
             Scene scene = new Scene(loader.load());
