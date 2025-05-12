@@ -3,11 +3,16 @@ package com.elams.demo_morpion;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Optional;
 
 public class Jeu {
@@ -64,12 +69,39 @@ public class Jeu {
 
     @FXML
     private void aPropos() {
-        // TODO Nouvelle modale pour les crédits
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/a-propos.fxml"));
+            Scene scene = new Scene(loader.load());
+
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("À propos");
+            stage.getIcons().add(MorpionApp.ICON);
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+        } catch (IOException e) {
+            MorpionApp.impossibleOuvrirInterface(e);
+        }
     }
 
     @FXML
     private void regles() {
         // TODO Nouvelle modale pour les règles
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/regles.fxml"));
+            Scene scene = new Scene(loader.load());
+
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Règles du jeu");
+            stage.getIcons().add(MorpionApp.ICON);
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+        } catch (IOException e) {
+            MorpionApp.impossibleOuvrirInterface(e);
+        }
     }
 
     @FXML
