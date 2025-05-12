@@ -16,14 +16,6 @@ public class Player {
         return name;
     }
 
-    public String getSign() {
-        return sign;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
     public void incrScore() {
         score++;
     }
