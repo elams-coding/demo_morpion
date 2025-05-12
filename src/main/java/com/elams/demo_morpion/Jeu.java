@@ -1,5 +1,6 @@
 package com.elams.demo_morpion;
 
+import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -37,6 +39,8 @@ public class Jeu {
     @FXML
     private Label nom;
     @FXML
+    private Label nomPremier;
+    @FXML
     private GridPane plateau;
     @FXML
     private Label signe;
@@ -48,9 +52,9 @@ public class Jeu {
         initialiserPlateau();
         initialiserVolets();
         initialiserNomJoueurs();
+        nomPremier.setText(premierJoueur);
         ajouterAuxVolets("Début de la partie !");
         ajouterAuxVolets("Partie " + nbParties);
-        ajouterHistorique("Premier joueur : " + premierJoueur);
         plateauJeu = new String[plateau.getRowCount()][plateau.getColumnCount()];
         egalite = false;
     }
@@ -109,8 +113,9 @@ public class Jeu {
                 }
             }
             ajouterHistorique("Gagnant : " + nom.getText() + " !");
-            augmenterScore(nom.getText());
+            // TODO afficher le score dans le conteneur score
             plateau.setDisable(true);
+            reinitialiser();
         } else if (egalite) {
             ajouterHistorique("Match nul !");
             augmenterScore(null);
@@ -273,7 +278,22 @@ public class Jeu {
 
     @FXML
     private void reinitialiser() {
+        PauseTransition pause = new PauseTransition(Duration.seconds(2));
+        pause.setOnFinished(_ -> initialiserPlateau());
+        pause.play();
 
+        egalite = false;
+        nom.setText(premierJoueur);
+        signe.setText(X);
+
+        if (plateau.isDisable()) {
+            plateau.setDisable(false);
+        }
+
+        plateauJeu = new String[plateau.getRowCount()][plateau.getColumnCount()];
+
+        ajouterAuxVolets("Fin de la partie !");
+        ajouterAuxVolets("Partie " + ++nbParties);
     }
 
     @FXML
