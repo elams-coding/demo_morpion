@@ -21,6 +21,7 @@ public class Jeu {
     private String premierJoueur;
     private String secondJoueur;
     private static int nbParties;
+    private static String[][] plateauJeu;
 
     @FXML
     private ScrollPane conteneurHistorique;
@@ -46,6 +47,7 @@ public class Jeu {
         initialiserNomJoueurs();
         ajouterAuxVolets("Début de la partie !");
         ajouterAuxVolets("Partie " + nbParties);
+        plateauJeu = new String[plateau.getRowCount()][plateau.getColumnCount()];
     }
 
     private void changerNom() {
@@ -83,8 +85,73 @@ public class Jeu {
         }
 
         bouton.setText(signe.getText());
-        ajouterHistorique(nom.getText() + " : (" + ligne + "," + colonne + ")" + " -> " + signe.getText());
+        plateauJeu[ligne][colonne] = signe.getText();
+        ajouterHistorique(nom.getText() + " : (" + ligne + "," + colonne + ")" + " [" + signe.getText() + "]");
+
+        if (avoirGagnant(plateauJeu)) {
+            System.out.println("Gagnant !");
+            for (Node node : plateau.getChildren()) {
+                if (node instanceof Button button) {
+                    button.setOnAction(_ -> {
+                    });
+                }
+            }
+        }
+
         changerNom();
+    }
+
+    private boolean avoirGagnant(String[][] plateau) {
+        // Vérifier les lignes
+        for (int i = 0; i < 3; i++) {
+            if (plateau[i][0] != null &&
+                    plateau[i][0].equals(plateau[i][1]) &&
+                    plateau[i][1].equals(plateau[i][2])) {
+                return true;
+            }
+        }
+
+        // Vérifier les colonnes
+        for (int j = 0; j < 3; j++) {
+            if (plateau[0][j] != null &&
+                    plateau[0][j].equals(plateau[1][j]) &&
+                    plateau[1][j].equals(plateau[2][j])) {
+                return true;
+            }
+        }
+
+        // Vérifier la diagonale principale
+        if (plateau[0][0] != null &&
+                plateau[0][0].equals(plateau[1][1]) &&
+                plateau[1][1].equals(plateau[2][2])) {
+            return true;
+        }
+
+        // Vérifier la diagonale secondaire
+        if (plateau[0][2] != null &&
+                plateau[0][2].equals(plateau[1][1]) &&
+                plateau[1][1].equals(plateau[2][0])) {
+            return true;
+        }
+
+        // Vérifier s'il y a match nul (plus de cases vides)
+        boolean plateauPlein = true;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (plateau[i][j] == null) {
+                    plateauPlein = false;
+                    break;
+                }
+            }
+            if (!plateauPlein) break;
+        }
+
+        if (plateauPlein) {
+            System.out.println("Match nul !");
+            return true;
+        }
+
+        return false;
     }
 
     @FXML
