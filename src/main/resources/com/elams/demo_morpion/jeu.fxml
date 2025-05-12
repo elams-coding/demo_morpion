@@ -127,14 +127,31 @@
         </ScrollPane>
     </right>
     <bottom>
-        <HBox alignment="CENTER" fillHeight="false" prefHeight="65.0" spacing="5.0" BorderPane.alignment="CENTER">
-            <Label text="Tour de :"/>
-            <Label fx:id="nom" text="Label"/>
-            <HBox alignment="CENTER" fillHeight="false" spacing="5.0">
-                <Label text="["/>
-                <Label fx:id="signe" layoutX="10.0" layoutY="10.0" text="Signe"/>
-                <Label layoutX="54.0" layoutY="10.0" text="]"/>
-            </HBox>
-        </HBox>
+        <VBox alignment="CENTER" spacing="5.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox alignment="CENTER" spacing="5.0">
+                    <children>
+                        <Label text="Premier joueur :"/>
+                        <Label fx:id="nomPremier" layoutX="263.0" layoutY="10.0" text="nom"/>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" fillHeight="false" spacing="5.0">
+                    <children>
+                        <Label text="Tour de :"/>
+                        <Label fx:id="nom" text="nom"/>
+                        <HBox alignment="CENTER" fillHeight="false" spacing="5.0">
+                            <children>
+                                <Label text="["/>
+                                <Label fx:id="signe" layoutX="10.0" layoutY="10.0" text="Signe"/>
+                                <Label layoutX="54.0" layoutY="10.0" text="]"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </HBox>
+            </children>
+            <BorderPane.margin>
+                <Insets bottom="10.0" left="5.0" right="5.0" top="10.0"/>
+            </BorderPane.margin>
+        </VBox>
     </bottom>
 </BorderPane>
