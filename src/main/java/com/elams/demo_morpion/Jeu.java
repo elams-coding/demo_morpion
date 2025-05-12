@@ -1,7 +1,6 @@
 package com.elams.demo_morpion;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -21,10 +20,6 @@ public class Jeu {
     private String premierJoueur;
     private String secondJoueur;
 
-    @FXML
-    private CheckMenuItem activerHistorique;
-    @FXML
-    private CheckMenuItem activerScore;
     @FXML
     private ScrollPane conteneurHistorique;
     @FXML
@@ -46,8 +41,6 @@ public class Jeu {
 
     @FXML
     public void initialize() {
-        activerHistorique.setSelected(true);
-        activerScore.setSelected(true);
         signe.setText(X);
         initialiserPlateau();
         initialiserVolets();
@@ -63,8 +56,30 @@ public class Jeu {
     }
 
     @FXML
-    void boutonCliquer(ActionEvent event) {
+    void boutonCliquer() {
         // TODO Gérer le clic sur un bouton du plateau de jeu
+    }
+
+    @FXML
+    private void activerHistorique() {
+        if (conteneurHistorique.isVisible() && conteneurHistorique.isManaged()) {
+            conteneurHistorique.setVisible(false);
+            conteneurHistorique.setManaged(false);
+        } else {
+            conteneurHistorique.setVisible(true);
+            conteneurHistorique.setManaged(true);
+        }
+    }
+
+    @FXML
+    private void activerScore() {
+        if (conteneurScore.isVisible() && conteneurScore.isManaged()) {
+            conteneurScore.setVisible(false);
+            conteneurScore.setManaged(false);
+        } else {
+            conteneurScore.setVisible(true);
+            conteneurScore.setManaged(true);
+        }
     }
 
     @FXML
