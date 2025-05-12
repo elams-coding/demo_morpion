@@ -4,7 +4,6 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -78,7 +77,7 @@ public class ParamJoueur {
     }
 
     @FXML
-    private void creerJoueur1(ActionEvent event) {
+    private void creerJoueur1() {
         String nom = entree1.getText().trim();
         nom = nom.replaceAll("\\s+", "_");
         String erreur = nomValide(nom);
@@ -102,7 +101,7 @@ public class ParamJoueur {
     }
 
     @FXML
-    private void creerJoueur2(ActionEvent event) {
+    private void creerJoueur2() {
         String nom = entree2.getText().trim();
         nom = nom.replaceAll("\\s+", "_");
         String erreur = nomValide(nom);
