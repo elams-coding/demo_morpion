@@ -22,6 +22,7 @@ public class Jeu {
     private String secondJoueur;
     private static int nbParties;
     private static String[][] plateauJeu;
+    private static boolean egalite;
 
     @FXML
     private ScrollPane conteneurHistorique;
@@ -48,6 +49,7 @@ public class Jeu {
         ajouterAuxVolets("Début de la partie !");
         ajouterAuxVolets("Partie " + nbParties);
         plateauJeu = new String[plateau.getRowCount()][plateau.getColumnCount()];
+        egalite = false;
     }
 
     private void changerNom() {
@@ -89,12 +91,10 @@ public class Jeu {
         ajouterHistorique(nom.getText() + " : (" + ligne + "," + colonne + ")" + " [" + signe.getText() + "]");
 
         if (avoirGagnant(plateauJeu)) {
-            System.out.println("Gagnant !");
-            for (Node node : plateau.getChildren()) {
-                if (node instanceof Button button) {
-                    button.setOnAction(_ -> {
-                    });
-                }
+            if (!egalite) {
+                System.out.println("Gagnant !");
+            } else {
+                System.out.println("Match nul !");
             }
         }
 
@@ -143,15 +143,16 @@ public class Jeu {
                     break;
                 }
             }
-            if (!plateauPlein) break;
+            if (!plateauPlein) {
+                break;
+            }
         }
 
         if (plateauPlein) {
-            System.out.println("Match nul !");
-            return true;
+            egalite = true;
         }
 
-        return false;
+        return egalite;
     }
 
     @FXML
