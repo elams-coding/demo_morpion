@@ -1,6 +1,7 @@
 package com.elams.demo_morpion;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -19,6 +20,7 @@ public class Jeu {
     public static final String O = "O";
     private String premierJoueur;
     private String secondJoueur;
+    private static int nbParties;
 
     @FXML
     private ScrollPane conteneurHistorique;
@@ -31,20 +33,28 @@ public class Jeu {
     @FXML
     private Label nom;
     @FXML
-    private MenuItem nouvellePartie;
-    @FXML
     private GridPane plateau;
-    @FXML
-    private MenuItem reinitialiser;
     @FXML
     private Label signe;
 
     @FXML
     public void initialize() {
         signe.setText(X);
+        nbParties = 1;
         initialiserPlateau();
         initialiserVolets();
         initialiserNomJoueurs();
+        ajouterAuxVolets("Début de la partie !");
+        ajouterAuxVolets("Partie " + nbParties);
+    }
+
+    private void changerNom() {
+        if (nom.getText().equals(premierJoueur)) {
+            nom.setText(secondJoueur);
+        } else {
+            nom.setText(premierJoueur);
+        }
+        changerSigne();
     }
 
     private void changerSigne() {
@@ -56,8 +66,25 @@ public class Jeu {
     }
 
     @FXML
-    void boutonCliquer() {
+    void boutonCliquer(ActionEvent event) {
         // TODO Gérer le clic sur un bouton du plateau de jeu
+        Button bouton = (Button) event.getSource();
+        if (bouton.getText() != null) {
+            return;
+        }
+        Integer ligne = GridPane.getRowIndex(bouton);
+        Integer colonne = GridPane.getColumnIndex(bouton);
+
+        if (ligne == null) {
+            ligne = 0;
+        }
+        if (colonne == null) {
+            colonne = 0;
+        }
+
+        bouton.setText(signe.getText());
+        ajouterHistorique(nom.getText() + " : (" + ligne + "," + colonne + ")" + " -> " + signe.getText());
+        changerNom();
     }
 
     @FXML
@@ -130,6 +157,16 @@ public class Jeu {
         }
     }
 
+    @FXML
+    private void reinitialiser() {
+
+    }
+
+    @FXML
+    private void nouvellePartie() {
+
+    }
+
     private void initialiserPlateau() {
         for (Node node : plateau.getChildren()) {
             if (node instanceof Button button) {
@@ -150,5 +187,18 @@ public class Jeu {
         assert secondJoueur != null;
         secondJoueur = (premierJoueur.equals(ParamJoueur.p1.getName())) ? ParamJoueur.p2.getName() : ParamJoueur.p1.getName();
         nom.setText(premierJoueur);
+    }
+
+    private void ajouterAuxVolets(String message) {
+        ajouterHistorique(message);
+        ajouterScore(message);
+    }
+
+    private void ajouterHistorique(String message) {
+        voletHistorique.getChildren().add(new Label(message));
+    }
+
+    private void ajouterScore(String message) {
+        voletScore.getChildren().add(new Label(message));
     }
 }
