@@ -3,14 +3,17 @@ package com.elams.demo_morpion;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 
 import java.util.Optional;
 
 public class Jeu {
-    @FXML
-    private MenuItem aPropos;
+    public static final String X = "X";
+    public static final String O = "O";
+
     @FXML
     private CheckMenuItem activerHistorique;
     @FXML
@@ -20,13 +23,15 @@ public class Jeu {
     @FXML
     private ScrollPane conteneurScore;
     @FXML
+    private VBox voletHistorique;
+    @FXML
+    private VBox voletScore;
+    @FXML
     private Label nom;
     @FXML
     private MenuItem nouvellePartie;
     @FXML
     private GridPane plateau;
-    @FXML
-    private MenuItem regles;
     @FXML
     private MenuItem reinitialiser;
     @FXML
@@ -34,12 +39,34 @@ public class Jeu {
 
     @FXML
     public void initialize() {
+        activerHistorique.setSelected(true);
+        activerScore.setSelected(true);
+        signe.setText(X);
+        initialiserPlateau();
+        initialiserVolets();
+    }
 
+    private void changerSigne() {
+        if (signe.getText().equals(X)) {
+            signe.setText(O);
+        } else {
+            signe.setText(X);
+        }
     }
 
     @FXML
     void boutonCliquer(ActionEvent event) {
-        // Gérer le clic sur un bouton du plateau de jeu
+        // TODO Gérer le clic sur un bouton du plateau de jeu
+    }
+
+    @FXML
+    private void aPropos() {
+        // TODO Nouvelle modale pour les crédits
+    }
+
+    @FXML
+    private void regles() {
+        // TODO Nouvelle modale pour les règles
     }
 
     @FXML
@@ -52,5 +79,19 @@ public class Jeu {
         if (resultat.isPresent() && resultat.get() == ButtonType.OK) {
             Platform.exit();
         }
+    }
+
+    private void initialiserPlateau() {
+        for (Node node : plateau.getChildren()) {
+            if (node instanceof Button button) {
+                button.setText(null);
+            }
+        }
+    }
+
+    private void initialiserVolets() {
+        // Supprimer le contenu des volets gauche et droite, tout en conservant leur en-tête
+        voletHistorique.getChildren().remove(1, voletHistorique.getChildren().size());
+        voletScore.getChildren().remove(1, voletHistorique.getChildren().size());
     }
 }
