@@ -171,12 +171,13 @@ public class Jeu {
             }
         }
 
-        return new int[]{0, 0}; // Ne devrait jamais arriver
+        return new int[]{0, 0}; // Ne dois jamais arriver
     }
 
     private int[] verifierCoup(String symbole) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
+                assert plateauJeu[i] != null;
                 if (plateauJeu[i][j] == null) {
                     plateauJeu[i][j] = symbole;
                     if (!avoirGagnant(plateauJeu).isEmpty()) {
