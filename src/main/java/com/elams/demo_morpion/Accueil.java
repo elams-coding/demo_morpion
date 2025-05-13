@@ -42,6 +42,7 @@ public final class Accueil {
                 scene = new Scene(loader.load());
                 Jeu gererJeu = loader.getController();
                 stage.setScene(scene);
+                stage.setTitle("Morpion - " + ParamJoueur.p1.getName() + " vs " + ParamJoueur.p2.getName());
                 stage.setOnCloseRequest(event -> {
                     gererJeu.quitter();
                     event.consume(); // Empêche la fermeture automatique
