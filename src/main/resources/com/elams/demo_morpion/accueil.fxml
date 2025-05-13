@@ -72,8 +72,8 @@
                         <Insets bottom="5.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="elams.iut (Discord)" />
-                  <Label text="elams-coding (GitHub)" />
+                  <Label onMouseClicked="#versDiscord" text="elams.iut (Discord)"/>
+                  <Label onMouseClicked="#versGitHub" text="elams-coding (GitHub)"/>
                </VBox>
                <VBox>
                   <Label text="Morpion">
