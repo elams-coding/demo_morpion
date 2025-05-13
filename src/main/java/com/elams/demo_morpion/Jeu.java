@@ -103,12 +103,7 @@ public class Jeu {
                 if (node instanceof Button btn) {
                     String pos = GridPane.getRowIndex(btn) + "," + GridPane.getColumnIndex(btn);
                     if (positionsGagnantes.contains(pos)) {
-                        btn.setStyle("-fx-background-color: lightgreen;" +
-                                "-fx-background-radius: 5;" +
-                                "-fx-border-style: solid;" +
-                                "-fx-border-color: darkgreen;" +
-                                "-fx-border-width: 2;" +
-                                "-fx-border-radius: 5");
+                        btn.setStyle("-fx-background-color: lightgreen;" + "-fx-background-radius: 5;" + "-fx-border-style: solid;" + "-fx-border-color: darkgreen;" + "-fx-border-width: 2;" + "-fx-border-radius: 5");
                     }
                 }
             }
@@ -129,9 +124,7 @@ public class Jeu {
 
         // Vérifier les lignes
         for (int i = 0; i < 3; i++) {
-            if (plateau[i][0] != null &&
-                    plateau[i][0].equals(plateau[i][1]) &&
-                    plateau[i][1].equals(plateau[i][2])) {
+            if (plateau[i][0] != null && plateau[i][0].equals(plateau[i][1]) && plateau[i][1].equals(plateau[i][2])) {
                 positionsGagnantes.add(i + ",0");
                 positionsGagnantes.add(i + ",1");
                 positionsGagnantes.add(i + ",2");
@@ -141,9 +134,7 @@ public class Jeu {
 
         // Vérifier les colonnes
         for (int j = 0; j < 3; j++) {
-            if (plateau[0][j] != null &&
-                    plateau[0][j].equals(plateau[1][j]) &&
-                    plateau[1][j].equals(plateau[2][j])) {
+            if (plateau[0][j] != null && plateau[0][j].equals(plateau[1][j]) && plateau[1][j].equals(plateau[2][j])) {
                 positionsGagnantes.add("0," + j);
                 positionsGagnantes.add("1," + j);
                 positionsGagnantes.add("2," + j);
@@ -152,9 +143,7 @@ public class Jeu {
         }
 
         // Vérifier la diagonale principale
-        if (plateau[0][0] != null &&
-                plateau[0][0].equals(plateau[1][1]) &&
-                plateau[1][1].equals(plateau[2][2])) {
+        if (plateau[0][0] != null && plateau[0][0].equals(plateau[1][1]) && plateau[1][1].equals(plateau[2][2])) {
             positionsGagnantes.add("0,0");
             positionsGagnantes.add("1,1");
             positionsGagnantes.add("2,2");
@@ -162,9 +151,7 @@ public class Jeu {
         }
 
         // Vérifier la diagonale secondaire
-        if (plateau[0][2] != null &&
-                plateau[0][2].equals(plateau[1][1]) &&
-                plateau[1][1].equals(plateau[2][0])) {
+        if (plateau[0][2] != null && plateau[0][2].equals(plateau[1][1]) && plateau[1][1].equals(plateau[2][0])) {
             positionsGagnantes.add("0,2");
             positionsGagnantes.add("1,1");
             positionsGagnantes.add("2,0");
@@ -297,8 +284,7 @@ public class Jeu {
         Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
         confirmation.setTitle("Nouvelle partie");
         confirmation.setHeaderText(null);
-        confirmation.setContentText("Voulez-vous vraiment commencer une nouvelle partie ?" + System.lineSeparator()
-                + "Cela réinitialisera les joueurs actuels.");
+        confirmation.setContentText("Voulez-vous vraiment commencer une nouvelle partie ?" + System.lineSeparator() + "Cela réinitialisera les joueurs actuels.");
 
         Optional<ButtonType> resultat = confirmation.showAndWait();
         if (resultat.isPresent() && resultat.get() == ButtonType.OK) {
@@ -372,7 +358,7 @@ public class Jeu {
         return true;
     }
 
-    private void reinitialiserDansSeconds(double seconds) {
+    private void reinitialiserDansSeconds(@SuppressWarnings("SameParameterValue") double seconds) {
         reinitialiserDansMillis(seconds * 1000);
     }
 
