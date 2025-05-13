@@ -19,7 +19,7 @@ public final class Accueil {
     private VBox creditsTxt;
 
     @FXML
-    private void jouer() {
+    public void jouer() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/param-joueur.fxml"));
             Scene scene = new Scene(loader.load());
