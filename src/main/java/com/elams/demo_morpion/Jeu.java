@@ -27,6 +27,8 @@ public class Jeu {
     private static boolean egalite;
     private String premierJoueur;
     private String secondJoueur;
+    private Player joueur1;
+    private Player joueur2;
     @FXML
     private ScrollPane conteneurHistorique;
     @FXML
@@ -53,8 +55,8 @@ public class Jeu {
         initialiserNomJoueurs();
         nomPremier.setText(premierJoueur);
         ajouterAuxVolets("Partie " + nbParties);
-        plateauJeu = new String[plateau.getRowCount()][plateau.getColumnCount()];
-        egalite = false;
+        joueur1 = ParamJoueur.p1;
+        joueur2 = ParamJoueur.p2;
     }
 
     private void changerNom() {
@@ -113,12 +115,10 @@ public class Jeu {
             ajouterScore("Gagnant : " + nom.getText() + " !");
             augmenterScore(nom.getText());
             plateau.setDisable(true);
-            reinitialiserDansSeconds(2.5);
         } else if (egalite) {
             ajouterScore("Match nul !");
             augmenterScore(null);
             plateau.setDisable(true);
-            reinitialiserDansSeconds(2);
         }
 
         changerNom();
@@ -193,18 +193,15 @@ public class Jeu {
     }
 
     private void augmenterScore(String joueur) {
-        Player joueur1 = ParamJoueur.p1;
-        Player joueur2 = ParamJoueur.p2;
-
         if (joueur != null && joueur.equals(premierJoueur)) {
             joueur1.incrScore();
         } else if (joueur != null && joueur.equals(secondJoueur)) {
             joueur2.incrScore();
         }
-        ajouterScore(joueur1.getName() + " : " + joueur1.getScore());
-        ajouterScore(joueur2.getName() + " : " + joueur2.getScore());
         System.out.println("p1 score: " + joueur1.getScore());
         System.out.println("p2 score: " + joueur2.getScore());
+
+        reinitialiserDansSeconds(2);
     }
 
     @FXML
@@ -284,18 +281,15 @@ public class Jeu {
         }
 
         initialiserPlateau();
-
-        egalite = false;
         nom.setText(premierJoueur);
         signe.setText(X);
+        ajouterScore(joueur1.getName() + " : " + joueur1.getScore());
+        ajouterScore(joueur2.getName() + " : " + joueur2.getScore());
+        ajouterAuxVolets("Partie " + ++nbParties);
 
         if (plateau.isDisable()) {
             plateau.setDisable(false);
         }
-
-        plateauJeu = new String[plateau.getRowCount()][plateau.getColumnCount()];
-
-        ajouterAuxVolets("Partie " + ++nbParties);
     }
 
     @FXML
@@ -326,9 +320,12 @@ public class Jeu {
     }
 
     private void initialiserPlateau() {
+        plateauJeu = new String[plateau.getRowCount()][plateau.getColumnCount()];
+        egalite = false;
         for (Node node : plateau.getChildren()) {
             if (node instanceof Button button) {
                 button.setText(null);
+                button.setStyle("");
             }
         }
     }
