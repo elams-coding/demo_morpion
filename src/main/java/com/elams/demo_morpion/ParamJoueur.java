@@ -20,7 +20,7 @@ public class ParamJoueur {
     public static Player p1;
     public static Player p2;
     public static String premierJoueur;
-    public static boolean difficile;
+    public static boolean imbattable;
 
     @FXML
     private ToggleGroup nbJoueurs; // Gestion de la sélection exclusive du mode de jeu (1 ou 2 joueurs)
@@ -51,7 +51,7 @@ public class ParamJoueur {
         entree2.clear();
         modeDifficile.setManaged(false);
         modeDifficile.setVisible(false);
-        difficile = false;
+        imbattable = false;
     }
 
     @FXML
@@ -213,7 +213,7 @@ public class ParamJoueur {
 
     @FXML
     private void activerModeDifficile() {
-        difficile = modeDifficile.isSelected();
+        imbattable = modeDifficile.isSelected();
         selection.requestFocus();
     }
 }
