@@ -22,12 +22,11 @@ import java.util.Set;
 public class Jeu {
     public static final String X = "X";
     public static final String O = "O";
-    private String premierJoueur;
-    private String secondJoueur;
     private static int nbParties;
     private static String[][] plateauJeu;
     private static boolean egalite;
-
+    private String premierJoueur;
+    private String secondJoueur;
     @FXML
     private ScrollPane conteneurHistorique;
     @FXML
@@ -298,7 +297,29 @@ public class Jeu {
 
     @FXML
     private void nouvellePartie() {
+        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmation.setTitle("Nouvelle partie");
+        confirmation.setHeaderText(null);
+        confirmation.setContentText("Voulez-vous vraiment commencer une nouvelle partie ?" + System.lineSeparator()
+                + "Cela réinitialisera les joueurs actuels.");
 
+        Optional<ButtonType> resultat = confirmation.showAndWait();
+        if (resultat.isPresent() && resultat.get() == ButtonType.OK) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/accueil.fxml"));
+                Scene sceneAccueil = new Scene(loader.load());
+
+                Stage stageActuel = (Stage) plateau.getScene().getWindow();
+                stageActuel.setScene(sceneAccueil);
+                stageActuel.setTitle("Morpion - Accueil");
+
+                Accueil accueil = loader.getController();
+                accueil.jouer();
+
+            } catch (IOException e) {
+                MorpionApp.impossibleOuvrirInterface(e);
+            }
+        }
     }
 
     private void initialiserPlateau() {
@@ -330,9 +351,12 @@ public class Jeu {
 
     private void ajouterHistorique(String message) {
         voletHistorique.getChildren().add(new Label(message));
+        Platform.runLater(() -> conteneurHistorique.setVvalue(1.0));
+
     }
 
     private void ajouterScore(String message) {
         voletScore.getChildren().add(new Label(message));
+        Platform.runLater(() -> conteneurScore.setVvalue(1.0));
     }
 }
