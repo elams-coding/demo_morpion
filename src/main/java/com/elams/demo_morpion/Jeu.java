@@ -29,6 +29,7 @@ public class Jeu {
     private String secondJoueur;
     private Player joueur1;
     private Player joueur2;
+    private boolean contreIA;
     @FXML
     private ScrollPane conteneurHistorique;
     @FXML
@@ -50,6 +51,7 @@ public class Jeu {
     public void initialize() {
         signe.setText(X);
         nbParties = 1;
+        contreIA = ParamJoueur.modeDeuxJoueurs;
         initialiserPlateau();
         initialiserVolets();
         initialiserNomJoueurs();
