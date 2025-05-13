@@ -51,7 +51,7 @@ public class Jeu {
     public void initialize() {
         signe.setText(X);
         nbParties = 1;
-        contreIA = ParamJoueur.modeDeuxJoueurs;
+        contreIA = !ParamJoueur.modeDeuxJoueurs;
         initialiserPlateau();
         initialiserVolets();
         initialiserNomJoueurs();
@@ -76,6 +76,79 @@ public class Jeu {
         } else {
             signe.setText(X);
         }
+    }
+
+    private void jouerCoupIA() {
+        if (!contreIA || !nom.getText().equals("MBot")) {
+            return;
+        }
+
+        PauseTransition pause = new PauseTransition(Duration.millis(500));
+        pause.setOnFinished(_ -> {
+            int[] coup = trouverMeilleurCoup();
+            Button bouton = trouverBouton(coup[0], coup[1]);
+            if (bouton != null) {
+                bouton.fire(); // Simule un clic sur le bouton
+            }
+        });
+        pause.play();
+    }
+
+    private int[] trouverMeilleurCoup() {
+        String symboleIA = signe.getText(); // Utilise le symbole actuel (X ou O)
+        String symboleJoueur = symboleIA.equals(X) ? O : X;
+
+        // Vérifier d'abord si l'IA peut gagner
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (plateauJeu[i][j] == null) {
+                    plateauJeu[i][j] = symboleIA;
+                    if (!avoirGagnant(plateauJeu).isEmpty()) {
+                        plateauJeu[i][j] = null;
+                        return new int[]{i, j};
+                    }
+                    plateauJeu[i][j] = null;
+                }
+            }
+        }
+
+        // Bloquer le joueur s'il peut gagner
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (plateauJeu[i][j] == null) {
+                    plateauJeu[i][j] = symboleJoueur;
+                    if (!avoirGagnant(plateauJeu).isEmpty()) {
+                        plateauJeu[i][j] = null;
+                        return new int[]{i, j};
+                    }
+                    plateauJeu[i][j] = null;
+                }
+            }
+        }
+
+        // Jouer au centre si possible
+        if (plateauJeu[1][1] == null) {
+            return new int[]{1, 1};
+        }
+
+        // Jouer dans un coin
+        int[][] coins = {{0, 0}, {0, 2}, {2, 0}, {2, 2}};
+        for (int[] coin : coins) {
+            if (plateauJeu[coin[0]][coin[1]] == null) {
+                return coin;
+            }
+        }
+
+        // Jouer sur un côté
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (plateauJeu[i][j] == null) {
+                    return new int[]{i, j};
+                }
+            }
+        }
+
+        return new int[]{0, 0}; // Ne devrait jamais arriver
     }
 
     @FXML
@@ -104,7 +177,9 @@ public class Jeu {
                 if (node instanceof Button btn) {
                     String pos = GridPane.getRowIndex(btn) + "," + GridPane.getColumnIndex(btn);
                     if (positionsGagnantes.contains(pos)) {
-                        btn.setStyle("-fx-background-color: lightgreen;" + "-fx-background-radius: 5;" + "-fx-border-style: solid;" + "-fx-border-color: darkgreen;" + "-fx-border-width: 2;" + "-fx-border-radius: 5");
+                        btn.setStyle("-fx-background-color: lightgreen;" + "-fx-background-radius: 5;" +
+                                "-fx-border-style: solid;" + "-fx-border-color: darkgreen;" +
+                                "-fx-border-width: 2;" + "-fx-border-radius: 5");
                     }
                 }
             }
@@ -115,9 +190,12 @@ public class Jeu {
             ajouterScore("Match nul !");
             augmenterScore(null);
             plateau.setDisable(true);
+        } else {
+            changerNom();
+            if (contreIA) {
+                jouerCoupIA();
+            }
         }
-
-        changerNom();
     }
 
     private Set<String> avoirGagnant(String[][] plateau) {
@@ -367,5 +445,19 @@ public class Jeu {
         PauseTransition pause = new PauseTransition(Duration.millis(millis));
         pause.setOnFinished(_ -> reinitialiser());
         pause.play();
+    }
+
+    private Button trouverBouton(int ligne, int colonne) {
+        for (Node node : plateau.getChildren()) {
+            if (node instanceof Button button) {
+                Integer rowIndex = GridPane.getRowIndex(button);
+                Integer colIndex = GridPane.getColumnIndex(button);
+
+                if (rowIndex != null && colIndex != null && rowIndex == ligne && colIndex == colonne) {
+                    return button;
+                }
+            }
+        }
+        return null;
     }
 }
