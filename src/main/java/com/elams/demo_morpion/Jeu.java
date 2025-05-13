@@ -59,6 +59,13 @@ public class Jeu {
         ajouterAuxVolets("Partie " + nbParties);
         joueur1 = ParamJoueur.p1;
         joueur2 = ParamJoueur.p2;
+
+        // Faire jouer l'IA si c'est son tour en premier
+        if (contreIA && nom.getText().equals("MBot")) {
+            PauseTransition pause = new PauseTransition(Duration.millis(500));
+            pause.setOnFinished(_ -> jouerCoupIA());
+            pause.play();
+        }
     }
 
     private void changerNom() {
@@ -355,6 +362,10 @@ public class Jeu {
 
         if (plateau.isDisable()) {
             plateau.setDisable(false);
+        }
+
+        if (contreIA && nom.getText().equals("MBot")) {
+            jouerCoupIA();
         }
     }
 
