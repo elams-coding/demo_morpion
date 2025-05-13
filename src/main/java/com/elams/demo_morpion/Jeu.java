@@ -30,6 +30,9 @@ public class Jeu {
     private Player joueur1;
     private Player joueur2;
     private boolean contreIA;
+    private boolean imbattable;
+    @FXML
+    private CheckMenuItem mBotImbattable;
     @FXML
     private ScrollPane conteneurHistorique;
     @FXML
@@ -59,11 +62,18 @@ public class Jeu {
         ajouterAuxVolets("Partie " + nbParties);
         joueur1 = ParamJoueur.p1;
         joueur2 = ParamJoueur.p2;
+        imbattable = ParamJoueur.imbattable;
+
+        if (!contreIA) {
+            mBotImbattable.setDisable(true);
+        } else {
+            mBotImbattable.setSelected(imbattable);
+        }
 
         // Faire jouer l'IA si c'est son tour en premier
         if (contreIA && nom.getText().equals("MBot")) {
             PauseTransition pause = new PauseTransition(Duration.millis(500));
-            pause.setOnFinished(_ -> jouerCoupIA());
+            pause.setOnFinished(_ -> jouerCoupIA(imbattable));
             pause.play();
         }
     }
@@ -85,20 +95,42 @@ public class Jeu {
         }
     }
 
-    private void jouerCoupIA() {
+    private void jouerCoupIA(boolean niveauImbattable) {
         if (!contreIA || !nom.getText().equals("MBot")) {
             return;
         }
 
         PauseTransition pause = new PauseTransition(Duration.millis(500));
         pause.setOnFinished(_ -> {
-            int[] coup = trouverMeilleurCoup();
+            int[] coup = niveauImbattable ? trouverMeilleurCoup() : trouverCoupAleatoire();
             Button bouton = trouverBouton(coup[0], coup[1]);
             if (bouton != null) {
-                bouton.fire(); // Simule un clic sur le bouton
+                bouton.fire();
             }
         });
         pause.play();
+    }
+
+    private int[] trouverCoupAleatoire() {
+        // Créer une liste des coups possibles
+        java.util.List<int[]> coupsPossibles = new java.util.ArrayList<>();
+
+        // Parcourir le plateau pour trouver toutes les cases vides
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (plateauJeu[i][j] == null) {
+                    coupsPossibles.add(new int[]{i, j});
+                }
+            }
+        }
+
+        // Choisir un coup au hasard parmi les coups possibles
+        if (!coupsPossibles.isEmpty()) {
+            int indexAleatoire = (int) (Math.random() * coupsPossibles.size());
+            return coupsPossibles.get(indexAleatoire);
+        }
+
+        return new int[]{0, 0}; // Ne devrait jamais arriver
     }
 
     private int[] trouverMeilleurCoup() {
@@ -108,6 +140,7 @@ public class Jeu {
         // Vérifier d'abord si l'IA peut gagner
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
+                assert plateauJeu[i] != null;
                 if (plateauJeu[i][j] == null) {
                     plateauJeu[i][j] = symboleIA;
                     if (!avoirGagnant(plateauJeu).isEmpty()) {
@@ -122,6 +155,7 @@ public class Jeu {
         // Bloquer le joueur s'il peut gagner
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
+                assert plateauJeu[i] != null;
                 if (plateauJeu[i][j] == null) {
                     plateauJeu[i][j] = symboleJoueur;
                     if (!avoirGagnant(plateauJeu).isEmpty()) {
@@ -155,7 +189,7 @@ public class Jeu {
             }
         }
 
-        return new int[]{0, 0}; // Ne devrait jamais arriver
+        return new int[]{0, 0}; // Ne dois jamais arriver
     }
 
     @FXML
@@ -200,7 +234,7 @@ public class Jeu {
         } else {
             changerNom();
             if (contreIA) {
-                jouerCoupIA();
+                jouerCoupIA(imbattable);
             }
         }
     }
@@ -365,7 +399,7 @@ public class Jeu {
         }
 
         if (contreIA && nom.getText().equals("MBot")) {
-            jouerCoupIA();
+            jouerCoupIA(imbattable);
         }
     }
 
@@ -392,6 +426,13 @@ public class Jeu {
             } catch (IOException e) {
                 MorpionApp.impossibleOuvrirInterface(e);
             }
+        }
+    }
+
+    @FXML
+    private void choisirImbattable() {
+        if (contreIA) {
+            imbattable = !imbattable;
         }
     }
 
