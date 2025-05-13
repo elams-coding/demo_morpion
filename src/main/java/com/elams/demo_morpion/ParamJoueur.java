@@ -19,7 +19,7 @@ import java.util.Random;
 public class ParamJoueur {
     public static final String RANDOM = "Random";
 
-    private boolean modeDeuxJoueurs;
+    public static boolean modeDeuxJoueurs;
     public static Player p1;
     public static Player p2;
     public static String premierJoueur;
