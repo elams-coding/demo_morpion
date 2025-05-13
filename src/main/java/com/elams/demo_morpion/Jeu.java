@@ -80,7 +80,6 @@ public class Jeu {
 
     @FXML
     void boutonCliquer(ActionEvent event) {
-        // TODO Gérer le clic sur un bouton du plateau de jeu
         Button bouton = (Button) event.getSource();
         if (bouton.getText() != null) {
             return;
