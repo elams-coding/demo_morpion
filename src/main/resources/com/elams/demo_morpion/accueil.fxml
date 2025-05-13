@@ -81,8 +81,8 @@
                         <Insets bottom="5.0" />
                      </VBox.margin>
                   </Label>
-                  <Label layoutX="10.0" layoutY="10.0" text="March  2025" />
-                  <Label layoutX="10.0" layoutY="27.0" text="Version : 1.0.1" />
+                  <Label layoutX="10.0" layoutY="10.0" text="Mars 2025 - Mai 2025"/>
+                  <Label layoutX="10.0" layoutY="27.0" text="Version 2.4.2"/>
                </VBox>
                <VBox>
                   <Label text="Roles">
