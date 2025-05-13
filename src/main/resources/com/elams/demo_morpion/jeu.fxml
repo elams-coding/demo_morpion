@@ -57,6 +57,14 @@
                                                     shortcut="UP"/>
                             </accelerator>
                         </MenuItem>
+                    <SeparatorMenuItem mnemonicParsing="false"/>
+                    <CheckMenuItem fx:id="mBotImbattable" mnemonicParsing="false" onAction="#choisirImbattable"
+                                   text="MBot Imbattable">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="I" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                        </accelerator>
+                    </CheckMenuItem>
+                    <SeparatorMenuItem mnemonicParsing="false"/>
                     <MenuItem mnemonicParsing="false" onAction="#quitter" text="Quitter">
                             <accelerator>
                                 <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP"
