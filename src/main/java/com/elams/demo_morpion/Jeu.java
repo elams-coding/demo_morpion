@@ -134,37 +134,19 @@ public class Jeu {
     }
 
     private int[] trouverMeilleurCoup() {
-        String symboleIA = signe.getText(); // Utilise le symbole actuel (X ou O)
+        String symboleIA = signe.getText();
         String symboleJoueur = symboleIA.equals(X) ? O : X;
 
-        // Vérifier d'abord si l'IA peut gagner
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                assert plateauJeu[i] != null;
-                if (plateauJeu[i][j] == null) {
-                    plateauJeu[i][j] = symboleIA;
-                    if (!avoirGagnant(plateauJeu).isEmpty()) {
-                        plateauJeu[i][j] = null;
-                        return new int[]{i, j};
-                    }
-                    plateauJeu[i][j] = null;
-                }
-            }
+        // Vérifier si l'IA peut gagner
+        int[] coupGagnant = verifierCoup(symboleIA);
+        if (coupGagnant != null) {
+            return coupGagnant;
         }
 
-        // Bloquer le joueur s'il peut gagner
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                assert plateauJeu[i] != null;
-                if (plateauJeu[i][j] == null) {
-                    plateauJeu[i][j] = symboleJoueur;
-                    if (!avoirGagnant(plateauJeu).isEmpty()) {
-                        plateauJeu[i][j] = null;
-                        return new int[]{i, j};
-                    }
-                    plateauJeu[i][j] = null;
-                }
-            }
+        // Vérifier si le joueur peut gagner pour le bloquer
+        int[] coupBloquant = verifierCoup(symboleJoueur);
+        if (coupBloquant != null) {
+            return coupBloquant;
         }
 
         // Jouer au centre si possible
@@ -189,7 +171,23 @@ public class Jeu {
             }
         }
 
-        return new int[]{0, 0}; // Ne dois jamais arriver
+        return new int[]{0, 0}; // Ne devrait jamais arriver
+    }
+
+    private int[] verifierCoup(String symbole) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (plateauJeu[i][j] == null) {
+                    plateauJeu[i][j] = symbole;
+                    if (!avoirGagnant(plateauJeu).isEmpty()) {
+                        plateauJeu[i][j] = null;
+                        return new int[]{i, j};
+                    }
+                    plateauJeu[i][j] = null;
+                }
+            }
+        }
+        return null;
     }
 
     @FXML
