@@ -5,10 +5,7 @@ import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -23,6 +20,7 @@ public class ParamJoueur {
     public static Player p1;
     public static Player p2;
     public static String premierJoueur;
+    public static boolean difficile;
 
     @FXML
     private ToggleGroup nbJoueurs; // Gestion de la sélection exclusive du mode de jeu (1 ou 2 joueurs)
@@ -39,6 +37,8 @@ public class ParamJoueur {
     @FXML
     private Label erreurMessage;
     @FXML
+    private CheckBox modeDifficile;
+    @FXML
     private ChoiceBox<String> selection;
 
     @FXML
@@ -49,6 +49,9 @@ public class ParamJoueur {
         vBox2.setDisable(true);
         entree1.clear();
         entree2.clear();
+        modeDifficile.setManaged(false);
+        modeDifficile.setVisible(false);
+        difficile = false;
     }
 
     @FXML
@@ -65,6 +68,9 @@ public class ParamJoueur {
         p2 = new Player(nom, "O");
         System.out.println("Joueur 2 : " + p2);
         entree1.requestFocus();
+        modeDifficile.setManaged(true);
+        modeDifficile.setVisible(true);
+        modeDifficile.setDisable(true);
     }
 
     @FXML
@@ -78,6 +84,8 @@ public class ParamJoueur {
             entree2.setText(null);
         }
         entree1.requestFocus();
+        modeDifficile.setManaged(false);
+        modeDifficile.setVisible(false);
     }
 
     @FXML
@@ -100,6 +108,8 @@ public class ParamJoueur {
         }
 
         if (p1 != null && p2 != null) {
+            modeDifficile.setDisable(false);
+            modeDifficile.requestFocus();
             quiCommence();
         }
     }
@@ -172,7 +182,6 @@ public class ParamJoueur {
 
     private void quiCommence() {
         vBox2.setDisable(false);
-        selection.requestFocus();
         ObservableList<String> choix = FXCollections.observableArrayList();
         choix.addAll(p1.getName(), p2.getName());
         choix.add(RANDOM);
@@ -200,5 +209,11 @@ public class ParamJoueur {
         // Fermer la fenêtre modale de configuration des joueurs pour passer à l'écran de jeu
         Stage fenetreModale = (Stage) vBox1.getScene().getWindow();
         fenetreModale.close();
+    }
+
+    @FXML
+    private void activerModeDifficile() {
+        difficile = modeDifficile.isSelected();
+        selection.requestFocus();
     }
 }
