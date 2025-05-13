@@ -130,7 +130,7 @@ public class Jeu {
             return coupsPossibles.get(indexAleatoire);
         }
 
-        return new int[]{0, 0}; // Ne doit jamais arriver
+        return new int[]{0, 0}; // Ne dois jamais arriver
     }
 
     private int[] trouverMeilleurCoup() {
