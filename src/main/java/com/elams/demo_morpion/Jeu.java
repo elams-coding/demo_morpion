@@ -52,7 +52,6 @@ public class Jeu {
         initialiserVolets();
         initialiserNomJoueurs();
         nomPremier.setText(premierJoueur);
-        ajouterAuxVolets("Début de la partie !");
         ajouterAuxVolets("Partie " + nbParties);
         plateauJeu = new String[plateau.getRowCount()][plateau.getColumnCount()];
         egalite = false;
@@ -111,14 +110,15 @@ public class Jeu {
                     }
                 }
             }
-            ajouterHistorique("Gagnant : " + nom.getText() + " !");
-            // TODO afficher le score dans le conteneur score
+            ajouterScore("Gagnant : " + nom.getText() + " !");
+            augmenterScore(nom.getText());
             plateau.setDisable(true);
-            reinitialiser();
+            reinitialiserDansSeconds(2.5);
         } else if (egalite) {
-            ajouterHistorique("Match nul !");
+            ajouterScore("Match nul !");
             augmenterScore(null);
             plateau.setDisable(true);
+            reinitialiserDansSeconds(2);
         }
 
         changerNom();
@@ -189,7 +189,7 @@ public class Jeu {
             egalite = true;
         }
 
-        return positionsGagnantes; // Ensemble vide si pas de gagnant
+        return positionsGagnantes; // Retourne un ensemble vide s'il n'y a pas de gagnant
     }
 
     private void augmenterScore(String joueur) {
@@ -201,6 +201,8 @@ public class Jeu {
         } else if (joueur != null && joueur.equals(secondJoueur)) {
             joueur2.incrScore();
         }
+        ajouterScore(joueur1.getName() + " : " + joueur1.getScore());
+        ajouterScore(joueur2.getName() + " : " + joueur2.getScore());
         System.out.println("p1 score: " + joueur1.getScore());
         System.out.println("p2 score: " + joueur2.getScore());
     }
@@ -277,9 +279,11 @@ public class Jeu {
 
     @FXML
     private void reinitialiser() {
-        PauseTransition pause = new PauseTransition(Duration.seconds(2));
-        pause.setOnFinished(_ -> initialiserPlateau());
-        pause.play();
+        if (reinitialisationInutile()) {
+            return;
+        }
+
+        initialiserPlateau();
 
         egalite = false;
         nom.setText(premierJoueur);
@@ -291,7 +295,6 @@ public class Jeu {
 
         plateauJeu = new String[plateau.getRowCount()][plateau.getColumnCount()];
 
-        ajouterAuxVolets("Fin de la partie !");
         ajouterAuxVolets("Partie " + ++nbParties);
     }
 
@@ -358,5 +361,27 @@ public class Jeu {
     private void ajouterScore(String message) {
         voletScore.getChildren().add(new Label(message));
         Platform.runLater(() -> conteneurScore.setVvalue(1.0));
+    }
+
+    private boolean reinitialisationInutile() {
+        for (String[] strings : plateauJeu) {
+            for (String string : strings) {
+                if (string != null) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    private void reinitialiserDansSeconds(double seconds) {
+        reinitialiserDansMillis(seconds * 1000);
+    }
+
+    private void reinitialiserDansMillis(double millis) {
+        PauseTransition pause = new PauseTransition(Duration.millis(millis));
+        pause.setOnFinished(_ -> reinitialiser());
+        pause.play();
     }
 }
