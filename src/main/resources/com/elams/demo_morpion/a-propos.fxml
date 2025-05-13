@@ -5,8 +5,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" spacing="25.0" xmlns="http://javafx.com/javafx/23.0.1">
+<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" spacing="25.0" xmlns="http://javafx.com/javafx/23.0.1"
+      fx:controller="com.elams.demo_morpion.Regles">
     <HBox>
         <VBox fillWidth="false" spacing="20.0">
             <padding>
@@ -18,8 +19,8 @@
                         <Insets bottom="5.0"/>
                     </VBox.margin>
                 </Label>
-                <Label text="elams.iut (Discord)"/>
-                <Label text="elams-coding (GitHub)"/>
+                <Label onMouseClicked="#versDiscord" text="elams.iut (Discord)"/>
+                <Label onMouseClicked="#versGitHub" text="elams-coding (GitHub)"/>
             </VBox>
             <VBox>
                 <Label text="Morpion">
@@ -27,8 +28,8 @@
                         <Insets bottom="5.0"/>
                     </VBox.margin>
                 </Label>
-                <Label layoutX="10.0" layoutY="10.0" text="March  2025"/>
-                <Label layoutX="10.0" layoutY="27.0" text="Version : 1.0.1"/>
+                <Label layoutX="10.0" layoutY="10.0" text="Mars 2025 - Mai 2025"/>
+                <Label layoutX="10.0" layoutY="27.0" text="Version : 2.4.2"/>
             </VBox>
             <VBox>
                 <Label text="Roles">
