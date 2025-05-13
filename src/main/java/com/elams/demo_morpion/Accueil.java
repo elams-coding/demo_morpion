@@ -77,4 +77,14 @@ public final class Accueil {
             creditsTxt.setVisible(false);
         }
     }
+
+    @FXML
+    private void versDiscord() {
+        new Regles().versDiscord();
+    }
+
+    @FXML
+    private void versGitHub() {
+        new Regles().versGitHub();
+    }
 }
