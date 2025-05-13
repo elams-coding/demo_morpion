@@ -102,8 +102,12 @@ public class ParamJoueur {
             p1 = new Player(nom, "X");
             System.out.println("Joueur 1 : " + p1);
 
-            if (modeDeuxJoueurs) {
+            if (modeDeuxJoueurs && p2 == null) {
                 entree2.requestFocus();
+            } else if (modeDeuxJoueurs) {
+                vBox2.setDisable(false);
+                selection.requestFocus();
+                quiCommence();
             }
         }
 
@@ -130,6 +134,8 @@ public class ParamJoueur {
         }
 
         if (p2 != null && p1 != null) {
+            vBox2.setDisable(false);
+            selection.requestFocus();
             quiCommence();
         }
     }
