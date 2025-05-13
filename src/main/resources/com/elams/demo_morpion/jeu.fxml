@@ -38,7 +38,7 @@
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
                     onAction="#boutonCliquer" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
             <BorderPane.margin>
-                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                <Insets bottom="5.0" top="5.0"/>
             </BorderPane.margin>
         </GridPane>
     </center>
@@ -112,6 +112,9 @@
                     minWidth="110.0" BorderPane.alignment="CENTER">
             <VBox fx:id="voletHistorique" minWidth="-Infinity" spacing="5.0">
                 <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Historique" textAlignment="CENTER"/>
+                <padding>
+                    <Insets left="5.0" right="5.0"/>
+                </padding>
                 </VBox>
             <BorderPane.margin>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
@@ -123,6 +126,9 @@
                     minWidth="110.0" BorderPane.alignment="CENTER">
             <VBox fx:id="voletScore" minWidth="-Infinity" spacing="5.0">
                 <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Score"/>
+                <padding>
+                    <Insets left="5.0" right="5.0"/>
+                </padding>
                 </VBox>
             <BorderPane.margin>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
