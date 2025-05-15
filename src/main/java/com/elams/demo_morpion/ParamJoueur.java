@@ -155,16 +155,16 @@ public class ParamJoueur {
                     || c == ')' || c == '|' || c == '\'' || c == '\"' || c == '%'
                     || c == '@' || c == '¨' || c == '^' || c == '¤' || c == 'µ'
                     || c == '$' || c == '&' || c == '*' || c == '£') {
-                return "Le nom ne doit pas contenir \"?!:,;/\\<>~#{}[]()|'\"@\".";
+                return "Le nom ne doit pas contenir de" + System.lineSeparator() + "caractères spécials.";
             }
         }
 
         if (nomFormatee.length() < 3) {
-            return "Le nom doit contenir au moins trois caractères.";
+            return "Le nom doit contenir :" + System.lineSeparator() + "au moins trois caractères.";
         }
 
         if (nomFormatee.length() >= 16) {
-            return "Le nom doit contenir au plus quinze caractères.";
+            return "Le nom doit contenir :" + System.lineSeparator() + "au plus quinze caractères.";
         }
 
         return null;
