@@ -1,0 +1,47 @@
+#root {
+    -fx-background-color: #161616;
+}
+
+.label {
+    -fx-font-size: 15;
+    -fx-font-family: "Consolas";
+    -fx-font-weight: bold;
+    -fx-text-fill: #8583b2;
+    -fx-line-spacing: 3;
+}
+
+#message-erreur {
+    -fx-font-size: 10;
+    -fx-font-family: "Lucida Console";
+    -fx-font-weight: bold;
+    -fx-text-fill: red;
+}
+
+.radio-button .label {
+    -fx-text-fill: #a9a7e5;
+    -fx-font-size: 15;
+    -fx-font-family: "Consolas";
+}
+
+.check-box .label {
+    -fx-text-fill: #a9a7e5;
+    -fx-font-size: 15;
+    -fx-font-family: "Consolas";
+}
+
+.button {
+    -fx-background-radius: 50;
+    -fx-font-family: "Consolas";
+    -fx-font-weight: bold;
+    -fx-background-color: #a9a7e5;
+}
+
+.text-field {
+    -fx-font-family: "Consolas";
+    -fx-font-weight: bold;
+    -fx-text-fill: #a9a7e5;
+    -fx-background-color: transparent;
+    -fx-border-color: #a9a7e5;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 50;
+}
