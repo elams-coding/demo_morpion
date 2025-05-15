@@ -1,5 +1,6 @@
 package com.elams.demo_morpion;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,6 +18,12 @@ public final class Accueil {
     private VBox reglesTxt;
     @FXML
     private VBox creditsTxt;
+
+    @FXML
+    private void initialize() {
+        // Ne pas placer le focus sur un des boutons
+        Platform.runLater(() -> image.getScene().getRoot().requestFocus());
+    }
 
     @FXML
     public void jouer() {
@@ -64,6 +71,7 @@ public final class Accueil {
         } else {
             image.setVisible(true);
             reglesTxt.setVisible(false);
+            image.requestFocus(); // Retirer le focus du bouton
         }
     }
 
@@ -76,6 +84,7 @@ public final class Accueil {
         } else {
             image.setVisible(true);
             creditsTxt.setVisible(false);
+            image.requestFocus();
         }
     }
 
