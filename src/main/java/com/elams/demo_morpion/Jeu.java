@@ -16,6 +16,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
@@ -339,6 +340,7 @@ public class Jeu {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/a-propos.fxml"));
             Scene scene = new Scene(loader.load());
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/a-propos.css")).toExternalForm());
 
             Stage stage = new Stage();
             stage.setScene(scene);
@@ -357,6 +359,7 @@ public class Jeu {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/regles.fxml"));
             Scene scene = new Scene(loader.load());
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/regles.css")).toExternalForm());
 
             Stage stage = new Stage();
             stage.setScene(scene);
