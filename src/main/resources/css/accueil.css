@@ -49,3 +49,8 @@
 .lien:hover {
     -fx-underline: true;
 }
+
+.fond-de-texte {
+    -fx-background-color: black;
+    -fx-background-radius: 10;
+}
