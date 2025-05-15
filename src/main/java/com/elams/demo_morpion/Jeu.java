@@ -299,10 +299,12 @@ public class Jeu {
     }
 
     private void augmenterScore(String joueur) {
-        if (joueur != null && joueur.equals(premierJoueur)) {
-            joueur1.incrScore();
-        } else if (joueur != null && joueur.equals(secondJoueur)) {
-            joueur2.incrScore();
+        if (joueur != null) {
+            if (joueur.equals(joueur1.getName())) {
+                joueur1.incrScore();
+            } else if (joueur.equals(joueur2.getName())) {
+                joueur2.incrScore();
+            }
         }
         System.out.println("p1 score: " + joueur1.getScore());
         System.out.println("p2 score: " + joueur2.getScore());
