@@ -9,6 +9,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public final class Accueil {
     @FXML
@@ -23,6 +24,7 @@ public final class Accueil {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/param-joueur.fxml"));
             Scene scene = new Scene(loader.load());
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/param-joueur.css")).toExternalForm());
 
             Stage stage = new Stage();
             stage.setScene(scene);
@@ -40,6 +42,8 @@ public final class Accueil {
                 loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/jeu.fxml"));
 
                 scene = new Scene(loader.load());
+                scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/jeu.css")).toExternalForm());
+
                 Jeu gererJeu = loader.getController();
                 stage.setScene(scene);
                 stage.setTitle("Morpion - " + ParamJoueur.p1.getName() + " vs " + ParamJoueur.p2.getName());

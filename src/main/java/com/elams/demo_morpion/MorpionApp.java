@@ -30,6 +30,7 @@ public class MorpionApp extends Application {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/accueil.fxml"));
             Scene scene = new Scene(loader.load());
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/accueil.css")).toExternalForm());
 
             stage.setTitle("Morpion - Accueil");
             stage.getIcons().add(ICON);
