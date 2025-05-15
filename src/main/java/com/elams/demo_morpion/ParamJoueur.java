@@ -52,6 +52,7 @@ public class ParamJoueur {
         modeDifficile.setManaged(false);
         modeDifficile.setVisible(false);
         imbattable = false;
+        selection.setValue("Choisissez un joueur");
     }
 
     @FXML
@@ -191,7 +192,6 @@ public class ParamJoueur {
         ObservableList<String> choix = FXCollections.observableArrayList();
         choix.addAll(p1.getName(), p2.getName());
         choix.add(RANDOM);
-        selection.setValue("Choisissez un joueur");
         selection.setItems(choix);
 
         selection.setOnAction(_ -> {
