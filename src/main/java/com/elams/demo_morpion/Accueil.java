@@ -43,19 +43,24 @@ public final class Accueil {
                 stage = (Stage) image.getScene().getWindow();
                 stage.close();
 
-                // Ouvrir la page de jeu
-                loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/jeu.fxml"));
+                // Ce try-catch évite d'afficher la pop up du premier try-catch qui ne le concerne pas
+                try {
+                    // Ouvrir la page de jeu
+                    loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/jeu.fxml"));
 
-                scene = new Scene(loader.load());
+                    scene = new Scene(loader.load());
 
-                Jeu gererJeu = loader.getController();
-                stage.setScene(scene);
-                stage.setTitle("Morpion - " + ParamJoueur.p1.getName() + " vs " + ParamJoueur.p2.getName());
-                stage.setOnCloseRequest(event -> {
-                    gererJeu.quitter();
-                    event.consume(); // Empêche la fermeture automatique
-                });
-                stage.show();
+                    Jeu gererJeu = loader.getController();
+                    stage.setScene(scene);
+                    stage.setTitle("Morpion - " + ParamJoueur.p1.getName() + " vs " + ParamJoueur.p2.getName());
+                    stage.setOnCloseRequest(event -> {
+                        gererJeu.quitter();
+                        event.consume(); // Empêche la fermeture automatique
+                    });
+                    stage.show();
+                } catch (IOException e) {
+                    stage.close();
+                }
             }
         } catch (IOException e) {
             MorpionApp.impossibleOuvrirInterface(e);
