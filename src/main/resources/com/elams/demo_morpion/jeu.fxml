@@ -118,7 +118,7 @@
     </top>
     <left>
         <ScrollPane fx:id="conteneurHistorique" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER"
-                    maxWidth="1.7976931348623157E308" minWidth="110.0" styleClass="scroll-pane-left"
+                    maxWidth="1.7976931348623157E308" minWidth="110.0" styleClass="scroll-pane-left" vbarPolicy="NEVER"
                     BorderPane.alignment="CENTER">
             <VBox fx:id="voletHistorique" minWidth="-Infinity" spacing="5.0">
                 <Label alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="titre-viewport"
@@ -134,7 +134,7 @@
     </left>
     <right>
         <ScrollPane fx:id="conteneurScore" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER"
-                    maxWidth="1.7976931348623157E308" minWidth="110.0" styleClass="scroll-pane-right"
+                    maxWidth="1.7976931348623157E308" minWidth="110.0" styleClass="scroll-pane-right" vbarPolicy="NEVER"
                     BorderPane.alignment="CENTER">
             <VBox fx:id="voletScore" minWidth="-Infinity" spacing="5.0">
                 <Label alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="titre-viewport" text="Score"/>
