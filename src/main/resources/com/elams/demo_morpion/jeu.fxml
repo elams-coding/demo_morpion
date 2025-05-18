@@ -45,7 +45,7 @@
     </center>
     <top>
         <MenuBar BorderPane.alignment="CENTER">
-                <Menu mnemonicParsing="false" text="Jeu">
+            <Menu mnemonicParsing="false" styleClass="menu" text="Jeu">
                     <MenuItem mnemonicParsing="false" onAction="#nouvellePartie" text="Nouvelle partie">
                             <accelerator>
                                 <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP"
@@ -58,14 +58,14 @@
                                                     shortcut="UP"/>
                             </accelerator>
                         </MenuItem>
-                    <SeparatorMenuItem mnemonicParsing="false"/>
-                    <CheckMenuItem fx:id="mBotImbattable" mnemonicParsing="false" onAction="#choisirImbattable"
-                                   text="MBot Imbattable">
+                <SeparatorMenuItem mnemonicParsing="false"/>
+                <CheckMenuItem fx:id="mBotImbattable" mnemonicParsing="false" onAction="#choisirImbattable"
+                               text="MBot Imbattable">
                         <accelerator>
                             <KeyCodeCombination alt="UP" code="I" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
                         </accelerator>
                     </CheckMenuItem>
-                    <SeparatorMenuItem mnemonicParsing="false"/>
+                <SeparatorMenuItem mnemonicParsing="false"/>
                     <MenuItem mnemonicParsing="false" onAction="#quitter" text="Quitter">
                             <accelerator>
                                 <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP"
@@ -76,9 +76,8 @@
                         <KeyCodeCombination alt="DOWN" code="J" control="UP" meta="UP" shift="UP" shortcut="UP"/>
                     </accelerator>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Fenêtre">
-                    <CheckMenuItem mnemonicParsing="false" onAction="#afficherHistorique" selected="true"
-                                   text="Historique">
+            <Menu mnemonicParsing="false" styleClass="menu" text="Fenêtre">
+                <CheckMenuItem mnemonicParsing="false" onAction="#afficherHistorique" selected="true" text="Historique">
                             <accelerator>
                                 <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="DOWN"
                                                     shortcut="UP"/>
@@ -94,7 +93,7 @@
                         <KeyCodeCombination alt="DOWN" code="F" control="UP" meta="UP" shift="UP" shortcut="UP"/>
                     </accelerator>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Aide">
+            <Menu mnemonicParsing="false" styleClass="menu" text="Aide">
                     <MenuItem mnemonicParsing="false" onAction="#aPropos" text="À propos">
                             <accelerator>
                                 <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="DOWN"

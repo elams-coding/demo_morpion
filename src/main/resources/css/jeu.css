@@ -17,9 +17,30 @@
     -fx-font-weight: bold;
 }
 
-.menu-bar:showing {
-    -fx-font-weight: bold;
+.menu-bar .menu:hover,
+.menu-bar .menu:showing,
+.menu-bar .menu-item:focused {
     -fx-background-color: #161616;
+    -fx-background-radius: 50;
+}
+
+.separator {
+    -fx-background-color: #a9a7e5;
+    -fx-background-radius: 10;
+    -fx-pref-height: 0.5;
+}
+
+.context-menu,
+.menu-bar .menu-item {
+    -fx-background-color: black;
+}
+
+.context-menu {
+    -fx-background-radius: 10;
+    -fx-border-color: #a9a7e5;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 10;
+    -fx-padding: 5;
 }
 
 .scroll-pane {
@@ -66,14 +87,13 @@
 }
 
 #grid-pane {
-    -fx-background-color: black;
     -fx-grid-lines-visible: true;
 }
 
 #grid-pane .button {
     -fx-background-radius: 0;
     -fx-font-family: "Arial Black";
-    -fx-font-size: 30;
+    -fx-font-size: 35;
     -fx-text-fill: #161616;
     -fx-background-color: #a9a7e5;
     -fx-effect: innershadow(gaussian, rgba(255, 255, 255, 0.5), 20, 0.5, 0, 0);
@@ -101,6 +121,7 @@
 
 #grid-pane:disabled .button {
     -fx-background-color: #8583b2;
+    -fx-background-radius: 10;
     -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 5, 0.5, 0, 2);
 }
 
