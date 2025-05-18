@@ -441,6 +441,7 @@ public class Jeu {
             if (node instanceof Button button) {
                 button.setText(null);
                 button.setStyle("");
+                button.setFocusTraversable(false); // Empêche le focus
             }
         }
     }
