@@ -1,7 +1,5 @@
 package com.elams.demo_morpion;
 
-import java.util.Random;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
@@ -15,6 +13,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.util.Random;
 
 public class ParamJoueur {
     public static final String RANDOM = "Random";
@@ -169,6 +169,10 @@ public class ParamJoueur {
 
     private void afficherMessageErreur(String erreur) {
         erreurMessage.setText(erreur);
+
+        double initialHeight = erreurMessage.getScene().getWindow().getHeight();
+        erreurMessage.getScene().getWindow().setHeight(350); // Agrandir la fenêtre pour ne pas avoir de débordement
+        
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.ZERO, _ -> {
                     erreurMessage.setManaged(true);
@@ -177,6 +181,7 @@ public class ParamJoueur {
                 new KeyFrame(Duration.seconds(2), _ -> {
                     erreurMessage.setManaged(false);
                     erreurMessage.setVisible(false);
+                    erreurMessage.getScene().getWindow().setHeight(initialHeight);
                 })
         );
         timeline.setCycleCount(1);  // Une seule exécution
