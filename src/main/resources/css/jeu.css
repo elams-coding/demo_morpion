@@ -121,7 +121,7 @@
 }
 
 .label {
-    -fx-font-size: 10;
+    -fx-font-size: 11;
     -fx-font-family: "Lucida Console";
-    -fx-text-fill: #8583b2;
+    -fx-text-fill: #8583b2BF;
 }
