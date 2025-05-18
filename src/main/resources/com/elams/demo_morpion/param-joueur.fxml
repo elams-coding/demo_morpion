@@ -3,9 +3,9 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" id="root" alignment="CENTER" spacing="20.0"
+<VBox xmlns:fx="http://javafx.com/fxml/1" id="root" alignment="CENTER" prefHeight="285.0" prefWidth="250.0"
       stylesheets="@../../../css/param-joueur.css" xmlns="http://javafx.com/javafx/23.0.1"
-      fx:controller="com.elams.demo_morpion.ParamJoueur">
+      spacing="20.0" fx:controller="com.elams.demo_morpion.ParamJoueur">
     <padding>
         <Insets bottom="30.0" top="30.0"/>
     </padding>
@@ -19,7 +19,7 @@
             <RadioButton mnemonicParsing="false" onAction="#modeDeuxJoueurs" text="2 joueurs" toggleGroup="$nbJoueurs" />
         </HBox>
     </VBox>
-   <VBox alignment="CENTER" fillWidth="false" prefWidth="250.0" spacing="5.0">
+    <VBox alignment="CENTER" fillWidth="false" spacing="5.0">
          <VBox fx:id="vBox1" alignment="CENTER" disable="true" fillWidth="false">
                <VBox alignment="CENTER" fillWidth="false" spacing="20.0">
                   <padding>
@@ -48,7 +48,7 @@
        </CheckBox>
          <VBox fx:id="vBox2" alignment="CENTER" disable="true" spacing="15.0">
                <Label text="Qui commence ?" />
-             <ChoiceBox fx:id="selection" prefWidth="201.0"/>
+             <ChoiceBox fx:id="selection" prefWidth="200.0"/>
              <VBox.margin>
                  <Insets/>
              </VBox.margin>
