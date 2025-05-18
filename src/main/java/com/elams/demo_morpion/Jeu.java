@@ -16,6 +16,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
@@ -370,9 +371,18 @@ public class Jeu {
     @FXML
     public void quitter() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/quitter.css")).toExternalForm());
         alert.setTitle("Quitter");
         alert.setHeaderText(null);
         alert.setContentText("Voulez-vous vraiment quitter ?");
+
+        // Modification des boutons
+        Button okButton = (Button) alert.getDialogPane().lookupButton(ButtonType.OK);
+        okButton.setText("Oui");
+        Button cancelButton = (Button) alert.getDialogPane().lookupButton(ButtonType.CANCEL);
+        cancelButton.setText("Non");
+
         Optional<ButtonType> resultat = alert.showAndWait();
         if (resultat.isPresent() && resultat.get() == ButtonType.OK) {
             Platform.exit();
