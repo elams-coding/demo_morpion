@@ -2,8 +2,7 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
@@ -56,71 +55,106 @@
       <ImageView fx:id="image" fitHeight="333.0" fitWidth="367.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../../../img/icon.png" />
       </ImageView>
-      <VBox fx:id="reglesTxt" alignment="CENTER" fillWidth="false" spacing="15.0" styleClass="fond-de-texte"
-            visible="false">
-         <Label prefWidth="335.0" text="Les joueurs décident ensemble qui sera le premier joueur" textAlignment="CENTER"
-                wrapText="true"/>
-         <Label prefWidth="335.0" text="Le premier joueur choisit la case sur laquelle il place son signe"
-                textAlignment="CENTER" wrapText="true"/>
-         <Label prefWidth="335.0" text="Le deuxième joueur utilise alors l'autre symbole et choisit où le placer"
-                textAlignment="CENTER" wrapText="true"/>
-         <Label prefWidth="335.0"
-                text="Les joueurs continuent à se relayer jusqu'à ce que l'un d'entre eux en obtienne trois à la suite ou qu'il fasse un « tic-tac-toe » sur une ligne, une colonne ou en diagonale."
-                textAlignment="CENTER" wrapText="true"/>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-         </padding>
-      </VBox>
-      <VBox fx:id="creditsTxt" alignment="CENTER" fillWidth="false" spacing="30.0" styleClass="fond-de-texte"
-            visible="false">
-         <HBox>
-            <VBox fillWidth="false" spacing="20.0">
-               <VBox>
-                  <Label styleClass="categorie" text="El Amine M.">
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label onMouseClicked="#versDiscord" styleClass="lien" text="elams.iut (Discord)">
-                     <graphic>
-                        <Label text="✓"/>
-                     </graphic>
-                  </Label>
-                  <Label onMouseClicked="#versGitHub" styleClass="lien" text="elams-coding (GitHub)">
-                     <graphic>
-                        <Label text="✓"/>
-                     </graphic>
-                  </Label>
-               </VBox>
-               <VBox>
-                  <Label styleClass="categorie" text="Morpion">
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label layoutX="10.0" layoutY="10.0" text="Mars 2025 - Mai 2025"/>
-                  <Label layoutX="10.0" layoutY="27.0" text="Version 3.1.1"/>
-               </VBox>
-               <VBox>
-                  <Label styleClass="categorie" text="Roles">
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label layoutX="10.0" layoutY="10.0" text="UI designer" wrapText="true"/>
-                  <Label layoutX="10.0" layoutY="38.0" text="UX designer" wrapText="true"/>
-                  <Label layoutX="10.0" layoutY="27.0" text="Intégrateur (SceneBuilder)" />
-                  <Label layoutX="10.0" layoutY="44.0" text="Développeur JavaFX et FXML" />
-               </VBox>
-            </VBox>
-            <ImageView fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-               <Image url="@../../../img/dessin.png" />
+      <StackPane fx:id="reglesTxt" styleClass="fond-de-texte" visible="false">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="fraise">
+               <image>
+                  <Image url="@../../../img/fraise.png"/>
+               </image>
             </ImageView>
-         </HBox>
-         <Label styleClass="categorie" text="© Morpion - 2025"/>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-         </padding>
-      </VBox>
+            <VBox alignment="CENTER" fillWidth="false" spacing="15.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+               </padding>
+               <children>
+                  <Label prefWidth="335.0" styleClass="regles"
+                         text="Les joueurs décident ensemble qui sera le premier joueur" textAlignment="CENTER"
+                         wrapText="true"/>
+                  <Label prefWidth="335.0" styleClass="regles"
+                         text="Le premier joueur choisit la case sur laquelle il place son signe" textAlignment="CENTER"
+                         wrapText="true"/>
+                  <Label prefWidth="335.0" styleClass="regles"
+                         text="Le deuxième joueur utilise alors l'autre symbole et choisit où le placer"
+                         textAlignment="CENTER" wrapText="true"/>
+                  <Label prefWidth="335.0" styleClass="regles"
+                         text="Les joueurs continuent à se relayer jusqu'à ce que l'un d'entre eux en obtienne trois à la suite ou qu'il fasse un « tic-tac-toe » sur une ligne, une colonne ou en diagonale."
+                         textAlignment="CENTER" wrapText="true"/>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+      <StackPane fx:id="creditsTxt" styleClass="fond-de-texte" visible="false">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="fraise">
+               <image>
+                  <Image url="@../../../img/fraise.png"/>
+               </image>
+            </ImageView>
+            <VBox alignment="CENTER" fillWidth="false" spacing="30.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+               </padding>
+               <children>
+                  <HBox>
+                     <children>
+                        <VBox fillWidth="false" spacing="20.0">
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label styleClass="categorie" text="El Amine M.">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0"/>
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label onMouseClicked="#versDiscord" styleClass="lien" text="elams.iut (Discord)">
+                                       <graphic>
+                                          <Label text="✓"/>
+                                       </graphic>
+                                    </Label>
+                                    <Label onMouseClicked="#versGitHub" styleClass="lien" text="elams-coding (GitHub)">
+                                       <graphic>
+                                          <Label text="✓"/>
+                                       </graphic>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
+                                    <Label styleClass="categorie" text="Morpion">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0"/>
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="10.0" text="Mars 2025 - Mai 2025"/>
+                                    <Label layoutX="10.0" layoutY="27.0" text="Version 3.1.1"/>
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
+                                    <Label styleClass="categorie" text="Roles">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0"/>
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="10.0" text="UI designer" wrapText="true"/>
+                                    <Label layoutX="10.0" layoutY="38.0" text="UX designer" wrapText="true"/>
+                                    <Label layoutX="10.0" layoutY="27.0" text="Intégrateur (SceneBuilder)"/>
+                                    <Label layoutX="10.0" layoutY="44.0" text="Développeur JavaFX et FXML"/>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <ImageView id="dessin" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/dessin.png"/>
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <Label styleClass="categorie" text="© Morpion - 2025"/>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
    </StackPane>
 </HBox>
