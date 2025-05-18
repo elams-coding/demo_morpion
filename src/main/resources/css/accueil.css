@@ -38,11 +38,14 @@
     -fx-stroke-width: 2;
 }
 
+.regles:hover,
+.categorie {
+    -fx-text-fill: #a9a7e5;
+}
 .categorie {
     -fx-font-size: 20;
     -fx-font-weight: bold;
     -fx-font-family: "Consolas";
-    -fx-text-fill: #a9a7e5;
 }
 
 .lien:hover {
@@ -52,4 +55,16 @@
 .fond-de-texte {
     -fx-background-color: black;
     -fx-background-radius: 10;
+}
+
+#dessin:hover {
+    -fx-image: url("../img/coeur_fraise.png");
+}
+
+#dessin {
+    -fx-image: url("../img/dessin.png");
+}
+
+.fraise {
+    -fx-opacity: 0.12;
 }
