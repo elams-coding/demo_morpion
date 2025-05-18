@@ -1,5 +1,7 @@
 package com.elams.demo_morpion;
 
+import java.util.Random;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
@@ -13,8 +15,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
-import java.util.Random;
 
 public class ParamJoueur {
     public static final String RANDOM = "Random";
@@ -60,7 +60,6 @@ public class ParamJoueur {
     private void modeUnJoueur() {
         initialize();
         modeDeuxJoueurs = false;
-        System.out.println("mode deux joueurs : " + false);
         vBox1.setDisable(false); // Réactive les contrôles après la sélection du mode de jeu
         entree2.setText("MBot");
         hBoxSpecial.setDisable(true);
@@ -68,7 +67,6 @@ public class ParamJoueur {
         // Si vous changez le nom du bot, veillez à ce que celui-ci soit valide. cf : nomValide()
         String nom = entree2.getText();
         p2 = new Player(nom, "O");
-        System.out.println("Joueur 2 : " + p2);
         entree1.requestFocus();
         modeDifficile.setManaged(true);
         modeDifficile.setVisible(true);
@@ -79,7 +77,6 @@ public class ParamJoueur {
     private void modeDeuxJoueurs() {
         initialize();
         modeDeuxJoueurs = true;
-        System.out.println("mode deux joueurs : " + true);
         vBox1.setDisable(false);
         if (hBoxSpecial.isDisable()) {
             hBoxSpecial.setDisable(false);
@@ -102,7 +99,6 @@ public class ParamJoueur {
             erreurMessage.setManaged(false);
             nom = Character.toUpperCase(nom.charAt(0)) + nom.substring(1);
             p1 = new Player(nom, "X");
-            System.out.println("Joueur 1 : " + p1);
 
             if (modeDeuxJoueurs && p2 == null) {
                 entree2.requestFocus();
@@ -132,7 +128,6 @@ public class ParamJoueur {
             erreurMessage.setManaged(false);
             nom = Character.toUpperCase(nom.charAt(0)) + nom.substring(1);
             p2 = new Player(nom, "O");
-            System.out.println("Joueur 2 : " + p2);
         }
 
         if (p2 != null && p1 != null) {
@@ -207,7 +202,6 @@ public class ParamJoueur {
                 }
             }
 
-            System.out.println("Premier joueur : " + premierJoueur);
             ouvrirPageJeu();
         });
     }
