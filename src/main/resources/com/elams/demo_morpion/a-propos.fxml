@@ -5,9 +5,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" spacing="25.0" xmlns="http://javafx.com/javafx/23.0.1"
-      fx:controller="com.elams.demo_morpion.Regles">
+<VBox xmlns:fx="http://javafx.com/fxml/1" id="root" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" spacing="25.0" stylesheets="@../../../css/a-propos.css"
+      xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.elams.demo_morpion.Credits">
     <HBox>
         <VBox fillWidth="false" spacing="20.0">
             <padding>

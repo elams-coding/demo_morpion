@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-public class Regles {
+public class Credits {
 
     public static final String HTTPS_GITHUB_COM_ELAMS_CODING = "https://github.com/elams-coding";
     public static final String HTTPS_DISCORD_COM_USERS = "https://discord.com/users/1280435655817691189";
