@@ -1,3 +1,7 @@
+#root {
+    -fx-background-color: #161616;
+}
+
 .button {
     -fx-background-radius: 50;
     -fx-font-family: "Consolas";
@@ -14,10 +18,6 @@
 .button:focused {
     -fx-background-color: #8583b2;
     -fx-effect: dropshadow(gaussian, #a9a7e5, 5, 0.5, 0, 2);
-}
-
-#root {
-    -fx-background-color: #161616;
 }
 
 .label {
@@ -37,7 +37,6 @@
     -fx-stroke: #a9a7e5;
     -fx-stroke-width: 2;
 }
-
 
 .categorie {
     -fx-font-size: 20;
