@@ -95,11 +95,11 @@ public final class Accueil {
 
     @FXML
     private void versDiscord() {
-        new Regles().versDiscord();
+        new Credits().versDiscord();
     }
 
     @FXML
     private void versGitHub() {
-        new Regles().versGitHub();
+        new Credits().versGitHub();
     }
 }
