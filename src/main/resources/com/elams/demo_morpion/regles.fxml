@@ -1,21 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" spacing="20.0" stylesheets="@../../../css/regles.css"
-      xmlns="http://javafx.com/javafx/23.0.1">
-    <padding>
-        <Insets bottom="20.0" left="10.0" right="10.0" top="20.0"/>
-    </padding>
-    <Label prefWidth="280.0" text="Les joueurs décident ensemble qui sera le premier joueur" textAlignment="CENTER"
-           wrapText="true"/>
-    <Label prefWidth="280.0" text="Le premier joueur choisit la case sur laquelle il place son signe"
-           textAlignment="CENTER" wrapText="true"/>
-    <Label prefWidth="280.0" text="Le deuxième joueur utilise alors l'autre symbole et choisit où le placer"
-           textAlignment="CENTER" wrapText="true"/>
-    <Label prefWidth="280.0"
-           text="Les joueurs continuent à se relayer jusqu'à ce que l'un d'entre eux en obtienne trois à la suite ou qu'il fasse un « tic-tac-toe » sur une ligne, une colonne ou en diagonale."
-           textAlignment="CENTER" wrapText="true"/>
-</VBox>
+<StackPane xmlns:fx="http://javafx.com/fxml/1" id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+           minWidth="-Infinity" stylesheets="@../../../css/regles.css"
+           xmlns="http://javafx.com/javafx/23.0.1">
+    <children>
+        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../img/fraise.png"/>
+            </image>
+        </ImageView>
+        <VBox alignment="CENTER" spacing="20.0">
+            <padding>
+                <Insets bottom="20.0" left="10.0" right="10.0" top="20.0"/>
+            </padding>
+            <children>
+                <Label prefWidth="280.0" text="Les joueurs décident ensemble qui sera le premier joueur"
+                       textAlignment="CENTER" wrapText="true"/>
+                <Label prefWidth="280.0" text="Le premier joueur choisit la case sur laquelle il place son signe"
+                       textAlignment="CENTER" wrapText="true"/>
+                <Label prefWidth="280.0" text="Le deuxième joueur utilise alors l'autre symbole et choisit où le placer"
+                       textAlignment="CENTER" wrapText="true"/>
+                <Label prefWidth="280.0"
+                       text="Les joueurs continuent à se relayer jusqu'à ce que l'un d'entre eux en obtienne trois à la suite ou qu'il fasse un « tic-tac-toe » sur une ligne, une colonne ou en diagonale."
+                       textAlignment="CENTER" wrapText="true"/>
+            </children>
+        </VBox>
+    </children>
+</StackPane>
