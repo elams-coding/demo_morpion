@@ -306,9 +306,6 @@ public class Jeu {
                 joueur2.incrScore();
             }
         }
-        System.out.println("p1 score: " + joueur1.getScore());
-        System.out.println("p2 score: " + joueur2.getScore());
-
         reinitialiserDansSeconds(2);
     }
 
