@@ -11,9 +11,9 @@ The goal is to implement clean game logic and a smooth user experience. UX refin
 - 👥 Player creation completed
 - 🧩 Functional game board now in place
 - 🪟Two side panels (left and right) aroujd the game board:
- - Action history (left) displayed in the format:
+    - Action history (left) displayed in the format:
    Name: (row, column) [symbol]
- - Score (right) displayed in the format:
+    - Score (right) displayed in the format:
    Name has (number of win) points
 - 🏗️ Further feature development in progress
 
@@ -27,14 +27,16 @@ The goal is to implement clean game logic and a smooth user experience. UX refin
 
 ## 🖼️ Preview
 
-*Screenshot or demo will be added here once available.*
+**Home sceen of Tic Tac Toe**
+
+<video src="docs/accueil.mp4" controls autoplay></video>
 
 ## 🛠 Technologies
 
-- Java 23
+- Java 23 (23.0.2)
 - JavaFX
 - Maven
 
 ## 👤 Author
 
-- Elams
+- El Amine M. (<u>\[elams-coding](https://github.com/elams-coding)*</u>)
