@@ -59,7 +59,7 @@ public class Jeu {
         initialiserVolets();
         initialiserNomJoueurs();
         nomPremier.setText(premierJoueur);
-        ajouterAuxVolets("Partie " + nbParties);
+        ajouterAuxVolets("Partie " + nbParties, true);
         joueur1 = ParamJoueur.p1;
         joueur2 = ParamJoueur.p2;
         imbattable = ParamJoueur.imbattable;
@@ -209,7 +209,7 @@ public class Jeu {
 
         bouton.setText(signe.getText());
         plateauJeu[ligne][colonne] = signe.getText();
-        ajouterHistorique(nom.getText() + " : (" + ligne + "," + colonne + ")" + " [" + signe.getText() + "]");
+        ajouterHistorique(nom.getText() + " : (" + ligne + "," + colonne + ")" + " [" + signe.getText() + "]", false);
 
         Set<String> positionsGagnantes = avoirGagnant(plateauJeu);
         if (!egalite && !positionsGagnantes.isEmpty()) {
@@ -223,11 +223,11 @@ public class Jeu {
                     }
                 }
             }
-            ajouterScore("Gagnant : " + nom.getText() + " !");
+            ajouterScore("Gagnant : " + nom.getText() + " !", true);
             augmenterScore(nom.getText());
             plateau.setDisable(true);
         } else if (egalite) {
-            ajouterScore("Match nul !");
+            ajouterScore("Match nul !", true);
             augmenterScore(null);
             plateau.setDisable(true);
         } else {
@@ -388,9 +388,9 @@ public class Jeu {
         initialiserPlateau();
         nom.setText(premierJoueur);
         signe.setText(X);
-        ajouterScore(joueur1.getName() + " : " + joueur1.getScore());
-        ajouterScore(joueur2.getName() + " : " + joueur2.getScore());
-        ajouterAuxVolets("Partie " + ++nbParties);
+        ajouterScore(joueur1.getName() + " : " + joueur1.getScore(), false);
+        ajouterScore(joueur2.getName() + " : " + joueur2.getScore(), false);
+        ajouterAuxVolets("Partie " + ++nbParties, true);
 
         if (plateau.isDisable()) {
             plateau.setDisable(false);
@@ -460,19 +460,38 @@ public class Jeu {
         nom.setText(premierJoueur);
     }
 
-    private void ajouterAuxVolets(String message) {
-        ajouterHistorique(message);
-        ajouterScore(message);
+    @SuppressWarnings("SameParameterValue")
+    private void ajouterAuxVolets(String message, boolean estDescriptif) {
+        ajouterHistorique(message, estDescriptif);
+        ajouterScore(message, estDescriptif);
     }
 
-    private void ajouterHistorique(String message) {
-        voletHistorique.getChildren().add(new Label(message));
+    private void ajouterHistorique(String message, boolean estDescriptif) {
+        Label label = new Label(message);
+        if (estDescriptif) {
+            label.setStyle("""
+                    -fx-font-size: 10;
+                    -fx-text-fill: #a9a7e5;
+                    """);
+            voletHistorique.getChildren().add(label);
+        } else {
+            voletHistorique.getChildren().add(label);
+        }
         Platform.runLater(() -> conteneurHistorique.setVvalue(1.0));
 
     }
 
-    private void ajouterScore(String message) {
-        voletScore.getChildren().add(new Label(message));
+    private void ajouterScore(String message, boolean estDescriptif) {
+        Label label = new Label(message);
+        if (estDescriptif) {
+            label.setStyle("""
+                    -fx-font-size: 10;
+                    -fx-text-fill: #a9a7e5;
+                    """);
+            voletScore.getChildren().add(label);
+        } else {
+            voletScore.getChildren().add(label);
+        }
         Platform.runLater(() -> conteneurScore.setVvalue(1.0));
     }
 
