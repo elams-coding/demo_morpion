@@ -27,6 +27,19 @@
     -fx-underline: true;
 }
 
+.radio-button .radio {
+    -fx-background-color: #8583b2;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-border-style: solid;
+}
+
+.radio-button:selected .radio .dot {
+    -fx-background-color: black;
+}
+
 .button {
     -fx-background-radius: 50;
     -fx-font-family: "Consolas";
@@ -43,7 +56,8 @@
     -fx-font-family: "Consolas";
     -fx-font-weight: bold;
     -fx-text-fill: #a9a7e5;
-    -fx-background-color: transparent;
+    -fx-background-color: #00000026;
+    -fx-background-radius: 50;
     -fx-border-color: #a9a7e5;
     -fx-border-width: 1.5;
     -fx-border-radius: 50;
@@ -60,12 +74,33 @@
     -fx-underline: true;
 }
 
+.check-box .box {
+    -fx-background-color: #8583b2;
+    -fx-background-radius: 2;
+    -fx-border-radius: 2;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-border-style: solid;
+}
+
+.check-box:selected .box {
+    -fx-mark-color: black;
+}
+
 .choice-box {
     -fx-font-family: "Consolas";
     -fx-fontsize: 12;
     -fx-font-weight: bold;
     -fx-background-color: black;
     -fx-background-radius: 50;
+}
+
+.choice-box .arrow {
+    -fx-background-color: #a9a7e5;
+}
+
+.choice-box:showing .arrow {
+    -fx-shape: "M 0 5 L 5 0 L 10 5 Z";
 }
 
 .choice-box .label {
