@@ -5,25 +5,25 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" id="root" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" spacing="25.0" stylesheets="@../../../css/a-propos.css"
-      xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.elams.demo_morpion.Credits">
+<VBox xmlns:fx="http://javafx.com/fxml/1" id="root" alignment="CENTER" spacing="25.0"
+      stylesheets="@../../../css/a-propos.css" xmlns="http://javafx.com/javafx/23.0.1"
+      fx:controller="com.elams.demo_morpion.Credits">
     <HBox>
         <VBox fillWidth="false" spacing="20.0">
             <padding>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
             </padding>
             <VBox>
-                <Label text="El Amine M.">
+                <Label styleClass="categorie" text="El Amine M.">
                     <VBox.margin>
                         <Insets bottom="5.0"/>
                     </VBox.margin>
                 </Label>
-                <Label onMouseClicked="#versDiscord" text="elams.iut (Discord)"/>
-                <Label onMouseClicked="#versGitHub" text="elams-coding (GitHub)"/>
+                <Label onMouseClicked="#versDiscord" styleClass="lien" text="elams.iut (Discord)"/>
+                <Label onMouseClicked="#versGitHub" styleClass="lien" text="elams-coding (GitHub)"/>
             </VBox>
             <VBox>
-                <Label text="Morpion">
+                <Label styleClass="categorie" text="Morpion">
                     <VBox.margin>
                         <Insets bottom="5.0"/>
                     </VBox.margin>
@@ -32,7 +32,7 @@
                 <Label layoutX="10.0" layoutY="27.0" text="Version : 2.4.2"/>
             </VBox>
             <VBox>
-                <Label text="Roles">
+                <Label styleClass="categorie" text="Roles">
                     <VBox.margin>
                         <Insets bottom="5.0"/>
                     </VBox.margin>
@@ -46,8 +46,8 @@
             <Image url="@../../../img/dessin.png"/>
         </ImageView>
     </HBox>
-    <Label text="© Morpion - 2025"/>
+    <Label styleClass="categorie" text="© Morpion - 2025"/>
     <padding>
-        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+        <Insets bottom="15.0" left="10.0" right="10.0" top="10.0"/>
     </padding>
 </VBox>
