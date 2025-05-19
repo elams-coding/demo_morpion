@@ -5,7 +5,10 @@ import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -22,8 +25,6 @@ public class ParamJoueur {
     public static String premierJoueur;
     public static boolean imbattable;
 
-    @FXML
-    private ToggleGroup nbJoueurs; // Gestion de la sélection exclusive du mode de jeu (1 ou 2 joueurs)
     @FXML
     private VBox vBox1;
     @FXML
@@ -52,13 +53,13 @@ public class ParamJoueur {
         modeDifficile.setManaged(false);
         modeDifficile.setVisible(false);
         imbattable = false;
+        selection.setValue("Choisissez un joueur");
     }
 
     @FXML
     private void modeUnJoueur() {
         initialize();
         modeDeuxJoueurs = false;
-        System.out.println("mode deux joueurs : " + false);
         vBox1.setDisable(false); // Réactive les contrôles après la sélection du mode de jeu
         entree2.setText("MBot");
         hBoxSpecial.setDisable(true);
@@ -66,7 +67,6 @@ public class ParamJoueur {
         // Si vous changez le nom du bot, veillez à ce que celui-ci soit valide. cf : nomValide()
         String nom = entree2.getText();
         p2 = new Player(nom, "O");
-        System.out.println("Joueur 2 : " + p2);
         entree1.requestFocus();
         modeDifficile.setManaged(true);
         modeDifficile.setVisible(true);
@@ -77,7 +77,6 @@ public class ParamJoueur {
     private void modeDeuxJoueurs() {
         initialize();
         modeDeuxJoueurs = true;
-        System.out.println("mode deux joueurs : " + true);
         vBox1.setDisable(false);
         if (hBoxSpecial.isDisable()) {
             hBoxSpecial.setDisable(false);
@@ -100,7 +99,6 @@ public class ParamJoueur {
             erreurMessage.setManaged(false);
             nom = Character.toUpperCase(nom.charAt(0)) + nom.substring(1);
             p1 = new Player(nom, "X");
-            System.out.println("Joueur 1 : " + p1);
 
             if (modeDeuxJoueurs && p2 == null) {
                 entree2.requestFocus();
@@ -130,7 +128,6 @@ public class ParamJoueur {
             erreurMessage.setManaged(false);
             nom = Character.toUpperCase(nom.charAt(0)) + nom.substring(1);
             p2 = new Player(nom, "O");
-            System.out.println("Joueur 2 : " + p2);
         }
 
         if (p2 != null && p1 != null) {
@@ -155,16 +152,16 @@ public class ParamJoueur {
                     || c == ')' || c == '|' || c == '\'' || c == '\"' || c == '%'
                     || c == '@' || c == '¨' || c == '^' || c == '¤' || c == 'µ'
                     || c == '$' || c == '&' || c == '*' || c == '£') {
-                return "Le nom ne doit pas contenir \"?!:,;/\\<>~#{}[]()|'\"@\".";
+                return "Le nom ne doit pas contenir de" + System.lineSeparator() + "caractères spécials.";
             }
         }
 
         if (nomFormatee.length() < 3) {
-            return "Le nom doit contenir au moins trois caractères.";
+            return "Le nom doit contenir :" + System.lineSeparator() + "au moins trois caractères.";
         }
 
         if (nomFormatee.length() >= 16) {
-            return "Le nom doit contenir au plus quinze caractères.";
+            return "Le nom doit contenir :" + System.lineSeparator() + "au plus quinze caractères.";
         }
 
         return null;
@@ -172,6 +169,10 @@ public class ParamJoueur {
 
     private void afficherMessageErreur(String erreur) {
         erreurMessage.setText(erreur);
+
+        double initialHeight = erreurMessage.getScene().getWindow().getHeight();
+        erreurMessage.getScene().getWindow().setHeight(350); // Agrandir la fenêtre pour ne pas avoir de débordement
+        
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.ZERO, _ -> {
                     erreurMessage.setManaged(true);
@@ -180,6 +181,7 @@ public class ParamJoueur {
                 new KeyFrame(Duration.seconds(2), _ -> {
                     erreurMessage.setManaged(false);
                     erreurMessage.setVisible(false);
+                    erreurMessage.getScene().getWindow().setHeight(initialHeight);
                 })
         );
         timeline.setCycleCount(1);  // Une seule exécution
@@ -191,7 +193,6 @@ public class ParamJoueur {
         ObservableList<String> choix = FXCollections.observableArrayList();
         choix.addAll(p1.getName(), p2.getName());
         choix.add(RANDOM);
-        selection.setValue("Choisissez un joueur");
         selection.setItems(choix);
 
         selection.setOnAction(_ -> {
@@ -206,7 +207,6 @@ public class ParamJoueur {
                 }
             }
 
-            System.out.println("Premier joueur : " + premierJoueur);
             ouvrirPageJeu();
         });
     }

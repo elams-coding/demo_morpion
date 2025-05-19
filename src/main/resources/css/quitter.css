@@ -1,0 +1,22 @@
+.dialog-pane {
+    -fx-background-color: black;
+}
+
+.label {
+    -fx-text-fill: #a9a7e5;
+    -fx-font-size: 15;
+    -fx-font-family: "Consolas";
+}
+
+.button {
+    -fx-background-color: #161616;
+    -fx-background-radius: 50;
+    -fx-text-fill: #8583b2;
+    -fx-font-size: 15;
+    -fx-font-family: "Lucida Console";
+}
+
+.button:hover {
+    -fx-underline: true;
+    -fx-effect: dropshadow(gaussian, #a9a7e5, 5, 0.7, 0, 1);
+}

@@ -1,10 +1,11 @@
 package com.elams.demo_morpion;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -14,9 +15,15 @@ public final class Accueil {
     @FXML
     private ImageView image;
     @FXML
-    private VBox reglesTxt;
+    private StackPane reglesTxt;
     @FXML
-    private VBox creditsTxt;
+    private StackPane creditsTxt;
+
+    @FXML
+    private void initialize() {
+        // Ne pas placer le focus sur un des boutons
+        Platform.runLater(() -> image.getScene().getRoot().requestFocus());
+    }
 
     @FXML
     public void jouer() {
@@ -36,18 +43,24 @@ public final class Accueil {
                 stage = (Stage) image.getScene().getWindow();
                 stage.close();
 
-                // Ouvrir la page de jeu
-                loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/jeu.fxml"));
+                // Ce try-catch évite d'afficher la pop up du premier try-catch qui ne le concerne pas
+                try {
+                    // Ouvrir la page de jeu
+                    loader = new FXMLLoader(getClass().getResource("/com/elams/demo_morpion/jeu.fxml"));
 
-                scene = new Scene(loader.load());
-                Jeu gererJeu = loader.getController();
-                stage.setScene(scene);
-                stage.setTitle("Morpion - " + ParamJoueur.p1.getName() + " vs " + ParamJoueur.p2.getName());
-                stage.setOnCloseRequest(event -> {
-                    gererJeu.quitter();
-                    event.consume(); // Empêche la fermeture automatique
-                });
-                stage.show();
+                    scene = new Scene(loader.load());
+
+                    Jeu gererJeu = loader.getController();
+                    stage.setScene(scene);
+                    stage.setTitle("Morpion - " + ParamJoueur.p1.getName() + " vs " + ParamJoueur.p2.getName());
+                    stage.setOnCloseRequest(event -> {
+                        gererJeu.quitter();
+                        event.consume(); // Empêche la fermeture automatique
+                    });
+                    stage.show();
+                } catch (IOException e) {
+                    stage.close();
+                }
             }
         } catch (IOException e) {
             MorpionApp.impossibleOuvrirInterface(e);
@@ -63,6 +76,7 @@ public final class Accueil {
         } else {
             image.setVisible(true);
             reglesTxt.setVisible(false);
+            image.requestFocus(); // Retirer le focus du bouton
         }
     }
 
@@ -75,16 +89,17 @@ public final class Accueil {
         } else {
             image.setVisible(true);
             creditsTxt.setVisible(false);
+            image.requestFocus();
         }
     }
 
     @FXML
     private void versDiscord() {
-        new Regles().versDiscord();
+        new Credits().versDiscord();
     }
 
     @FXML
     private void versGitHub() {
-        new Regles().versGitHub();
+        new Credits().versGitHub();
     }
 }

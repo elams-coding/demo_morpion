@@ -1,0 +1,137 @@
+#root {
+    -fx-background-color: #161616;
+}
+
+.label {
+    -fx-font-size: 15;
+    -fx-font-family: "Consolas";
+    -fx-font-weight: bold;
+    -fx-text-fill: #a9a7e5;
+    -fx-line-spacing: 3;
+}
+
+#message-erreur {
+    -fx-font-size: 10;
+    -fx-font-family: "Lucida Console";
+    -fx-font-weight: bold;
+    -fx-text-fill: red;
+}
+
+.radio-button {
+    -fx-text-fill: #8583b2;
+    -fx-font-size: 12;
+    -fx-font-family: "Consolas";
+}
+
+.radio-button:selected {
+    -fx-underline: true;
+}
+
+.radio-button .radio {
+    -fx-background-color: #8583b2;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-border-style: solid;
+}
+
+.radio-button:selected .radio .dot {
+    -fx-background-color: black;
+}
+
+.button {
+    -fx-background-radius: 50;
+    -fx-font-family: "Consolas";
+    -fx-font-weight: bold;
+    -fx-background-color: #a9a7e5;
+}
+
+.button:hover {
+    -fx-background-color: #8583b2;
+    -fx-effect: dropshadow(gaussian, #a9a7e5, 5, 0.5, 0, 2);
+}
+
+.text-field {
+    -fx-font-family: "Consolas";
+    -fx-font-weight: bold;
+    -fx-text-fill: #a9a7e5;
+    -fx-background-color: #00000026;
+    -fx-background-radius: 50;
+    -fx-border-color: #a9a7e5;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 50;
+}
+
+.check-box {
+    -fx-font-family: "Consolas";
+    -fx-fontsize: 12;
+    -fx-font-weight: bold;
+    -fx-text-fill: #8583b2;
+}
+
+.check-box:selected {
+    -fx-underline: true;
+}
+
+.check-box .box {
+    -fx-background-color: #8583b2;
+    -fx-background-radius: 2;
+    -fx-border-radius: 2;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-border-style: solid;
+}
+
+.check-box:selected .box {
+    -fx-mark-color: black;
+}
+
+.choice-box {
+    -fx-font-family: "Consolas";
+    -fx-fontsize: 12;
+    -fx-font-weight: bold;
+    -fx-background-color: black;
+    -fx-background-radius: 50;
+}
+
+.choice-box .arrow {
+    -fx-background-color: #a9a7e5;
+}
+
+.choice-box:showing .arrow {
+    -fx-shape: "M 0 5 L 5 0 L 10 5 Z";
+}
+
+.choice-box .label {
+    -fx-text-fill: #8583b2;
+}
+
+.choice-box > .label {
+    -fx-text-fill: #a9a7e5;
+}
+
+.choice-box .context-menu {
+    -fx-background-color: black;
+    -fx-background-radius: 10;
+    -fx-border-color: #a9a7e5;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 10;
+    -fx-padding: 5;
+}
+
+.choice-box .menu-item:focused {
+    -fx-background-color: #161616;
+    -fx-background-radius: 50;
+    -fx-cursor: hand;
+}
+
+.choice-box .menu-item .label {
+    -fx-font-family: "Lucida Console";
+    -fx-fontsize: 10;
+    -fx-text-fill: #8583b2;
+}
+
+.choice-box .menu-item:focused .label {
+    -fx-text-fill: white;
+}

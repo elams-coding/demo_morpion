@@ -1,0 +1,148 @@
+#root {
+    -fx-background-color: #161616;
+}
+
+.menu-bar {
+    -fx-background-color: black;
+    -fx-background-radius: 0 0 10 10;
+    -fx-border-radius: 0 0 10 10;
+    -fx-border-color: #a9a7e5;
+    -fx-border-width: 1.5;
+}
+
+.menu-bar .label {
+    -fx-font-family: "Consolas";
+    -fx-font-size: 15;
+    -fx-text-fill: #a9a7e5;
+    -fx-font-weight: bold;
+}
+
+.menu-bar .menu:hover,
+.menu-bar .menu:showing,
+.menu-bar .menu-item:focused {
+    -fx-background-color: #161616;
+    -fx-background-radius: 50;
+}
+
+.separator {
+    -fx-background-color: #a9a7e5;
+    -fx-background-radius: 10;
+    -fx-pref-height: 0.5;
+}
+
+.context-menu,
+.menu-bar .menu-item {
+    -fx-background-color: black;
+}
+
+.context-menu {
+    -fx-background-radius: 10;
+    -fx-border-color: #a9a7e5;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 10;
+    -fx-padding: 5;
+}
+
+.scroll-pane {
+    -fx-background-color: black;
+    -fx-border-style: solid;
+    -fx-border-color: #a9a7e5;
+    -fx-border-width: 1.5;
+}
+
+.scroll-pane-left {
+    -fx-background-radius: 10 0 0 10;
+    -fx-border-radius: 10 0 0 10;
+}
+
+.scroll-pane-right {
+    -fx-background-radius: 0 10 10 0;
+    -fx-border-radius: 0 10 10 0;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .titre-viewport {
+    -fx-font-size: 15;
+    -fx-font-family: "Consolas";
+    -fx-font-weight: bold;
+    -fx-text-fill: #a9a7e5;
+    -fx-underline: true;
+}
+
+#vbox {
+    -fx-background-color: black;
+    -fx-background-radius: 10;
+    -fx-border-color: #a9a7e5;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 10;
+}
+
+#vbox .hbox .label {
+    -fx-font-size: 15;
+    -fx-font-family: "Lucida Console";
+    -fx-text-fill: #8583b2;
+}
+
+#grid-pane {
+    -fx-grid-lines-visible: true;
+}
+
+#grid-pane .button {
+    -fx-background-radius: 0;
+    -fx-font-family: "Arial Black";
+    -fx-font-size: 35;
+    -fx-text-fill: #161616;
+    -fx-background-color: #a9a7e5;
+    -fx-effect: innershadow(gaussian, rgba(255, 255, 255, 0.5), 20, 0.5, 0, 0);
+}
+
+#grid-pane #button-t-l {
+    -fx-background-radius: 10 0 0 0;
+}
+
+#grid-pane #button-t-r {
+    -fx-background-radius: 0 10 0 0;
+}
+
+#grid-pane #button-b-l {
+    -fx-background-radius: 0 0 0 10;
+}
+
+#grid-pane #button-b-r {
+    -fx-background-radius: 0 0 10 0;
+}
+
+#grid-pane .button:pressed {
+    -fx-background-color: #8583b2;
+}
+
+#grid-pane:disabled .button {
+    -fx-background-color: #8583b2;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 5, 0.5, 0, 2);
+}
+
+#grid-pane:disabled #button-t-l {
+    -fx-background-radius: 10 0 0 0;
+}
+
+#grid-pane:disabled #button-t-r {
+    -fx-background-radius: 0 10 0 0;
+}
+
+#grid-pane:disabled #button-b-l {
+    -fx-background-radius: 0 0 0 10;
+}
+
+#grid-pane:disabled #button-b-r {
+    -fx-background-radius: 0 0 10 0;
+}
+
+.label {
+    -fx-font-size: 11;
+    -fx-font-family: "Lucida Console";
+    -fx-text-fill: #8583b2BF;
+}

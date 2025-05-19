@@ -1,0 +1,18 @@
+#root {
+    -fx-background-color: #161616;
+}
+
+.image-view {
+    -fx-opacity: 0.12;
+}
+
+.label {
+    -fx-font-size: 12;
+    -fx-font-family: "Lucida Console";
+    -fx-text-fill: #8583b2;
+    -fx-line-spacing: 2;
+}
+
+.label:hover {
+    -fx-text-fill: #a9a7e5;
+}

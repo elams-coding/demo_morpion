@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity"
-      spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1"
-      fx:controller="com.elams.demo_morpion.ParamJoueur">
+<VBox xmlns:fx="http://javafx.com/fxml/1" id="root" alignment="CENTER" prefHeight="285.0" prefWidth="250.0"
+      stylesheets="@../../../css/param-joueur.css" xmlns="http://javafx.com/javafx/23.0.1"
+      spacing="20.0" fx:controller="com.elams.demo_morpion.ParamJoueur">
     <padding>
-        <Insets bottom="30.0" left="10.0" right="10.0" top="30.0"/>
+        <Insets bottom="30.0" top="30.0"/>
     </padding>
     <VBox alignment="CENTER" fillWidth="false" spacing="15.0">
         <Label text="Nombre de joueurs" />
@@ -19,22 +19,27 @@
             <RadioButton mnemonicParsing="false" onAction="#modeDeuxJoueurs" text="2 joueurs" toggleGroup="$nbJoueurs" />
         </HBox>
     </VBox>
-   <VBox alignment="CENTER" fillWidth="false" prefWidth="250.0" spacing="5.0">
+    <VBox alignment="CENTER" fillWidth="false" spacing="5.0">
          <VBox fx:id="vBox1" alignment="CENTER" disable="true" fillWidth="false">
                <VBox alignment="CENTER" fillWidth="false" spacing="20.0">
                   <padding>
                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                   </padding>
                      <HBox fillHeight="false" spacing="10.0">
-                           <TextField fx:id="entree1" onAction="#creerJoueur1" />
+                         <TextField fx:id="entree1" alignment="CENTER" onAction="#creerJoueur1" prefWidth="150.0"/>
                            <Button mnemonicParsing="false" onAction="#creerJoueur1" text="OK" />
                      </HBox>
                      <HBox fx:id="hBoxSpecial" fillHeight="false" layoutX="10.0" layoutY="10.0" spacing="10.0">
-                           <TextField fx:id="entree2" onAction="#creerJoueur2" />
+                         <TextField fx:id="entree2" alignment="CENTER" onAction="#creerJoueur2" prefWidth="150.0"/>
                            <Button mnemonicParsing="false" onAction="#creerJoueur2" text="OK" />
                      </HBox>
                </VBox>
-               <Label fx:id="erreurMessage" text="Erreur" textAlignment="CENTER" textFill="RED" />
+             <Label id="message-erreur" fx:id="erreurMessage" alignment="CENTER" contentDisplay="CENTER" text="Erreur"
+                    textAlignment="CENTER" textFill="RED" wrapText="true">
+                 <VBox.margin>
+                     <Insets top="5.0"/>
+                 </VBox.margin>
+             </Label>
          </VBox>
        <CheckBox fx:id="modeDifficile" mnemonicParsing="false" onAction="#activerModeDifficile" text="Mode difficile">
            <VBox.margin>
@@ -43,7 +48,7 @@
        </CheckBox>
          <VBox fx:id="vBox2" alignment="CENTER" disable="true" spacing="15.0">
                <Label text="Qui commence ?" />
-               <ChoiceBox fx:id="selection" />
+             <ChoiceBox fx:id="selection" prefWidth="200.0"/>
              <VBox.margin>
                  <Insets/>
              </VBox.margin>
